@@ -1,0 +1,1833 @@
+﻿Program.Sub.ScreenSU.Start
+Gui.Form..Create(BaseForm)
+Gui.Form..Caption("Open Work Orders with Material Requirement (6163)")
+Gui.Form..Size(19590,8220)
+Gui.Form..MinX(0)
+Gui.Form..MinY(0)
+Gui.Form..Position(0,0)
+Gui.Form..BackColor(-2147483633)
+Gui.Form..MousePointer(0)
+Gui.Form..Event(UnLoad,Form_UnLoad)
+Gui.Form..AlwaysOnTop(False)
+Gui.Form..FontName("Tahoma")
+Gui.Form..FontSize(8.25)
+Gui.Form..ControlBox(True)
+Gui.Form..MaxButton(True)
+Gui.Form..MinButton(True)
+Gui.Form..Moveable(True)
+Gui.Form..Sizeable(True)
+Gui.Form..ShowInTaskBar(True)
+Gui.Form..TitleBar(True)
+Gui.Form.gsWO.Create(GsGridControl)
+Gui.Form.gsWO.Size(19410,5865)
+Gui.Form.gsWO.Position(90,1800)
+Gui.Form.gsWO.Event(RowCellClick,gsWO_RowCellClick)
+Gui.Form.gsWO.Event(CellValueChanged,gsWO_CellValueChanged)
+Gui.Form.gsWO.Enabled(True)
+Gui.Form.gsWO.Visible(True)
+Gui.Form.gsWO.Zorder(0)
+Gui.Form.cmdExport.Create(Button)
+Gui.Form.cmdExport.Size(855,375)
+Gui.Form.cmdExport.Position(6225,225)
+Gui.Form.cmdExport.Caption("Export")
+Gui.Form.cmdExport.Event(Click,cmdExport_Click)
+Gui.Form.cmdExport.Enabled(True)
+Gui.Form.cmdExport.Visible(True)
+Gui.Form.cmdExport.Zorder(0)
+Gui.Form.cmdExport.FontName("Tahoma")
+Gui.Form.cmdExport.FontSize(8.25)
+Gui.Form.cmdRefresh.Create(Button)
+Gui.Form.cmdRefresh.Size(855,375)
+Gui.Form.cmdRefresh.Position(6240,810)
+Gui.Form.cmdRefresh.Caption("Refresh")
+Gui.Form.cmdRefresh.Event(Click,cmdRefresh_Click)
+Gui.Form.cmdRefresh.Enabled(True)
+Gui.Form.cmdRefresh.Visible(True)
+Gui.Form.cmdRefresh.Zorder(0)
+Gui.Form.cmdRefresh.FontName("Tahoma")
+Gui.Form.cmdRefresh.FontSize(8.25)
+Gui.Form.frmSelection.Create(Frame)
+Gui.Form.frmSelection.Enabled(True)
+Gui.Form.frmSelection.Visible(True)
+Gui.Form.frmSelection.Zorder(0)
+Gui.Form.frmSelection.Size(3000,1500)
+Gui.Form.frmSelection.Position(7275,150)
+Gui.Form.frmSelection.Caption("Selection")
+Gui.Form.frmSelection.FontName("Tahoma")
+Gui.Form.frmSelection.FontSize(8.25)
+Gui.Form.frmSelection.BorderStyle(1)
+Gui.Form.lblByCustomerPO.Create(Label,"By Customer PO",True,2370,240,0,405,585,True,0,"Tahoma",8.5,,0,1)
+Gui.Form.lblByCustomerPO.BorderStyle(0)
+Gui.Form.lblByCustomerPO.ForeColor(-2147483619)
+Gui.Form.lblByCustomerPO.Parent("frmSelection")
+Gui.Form.lblByCustomerPO.Event(Click,lblByCustomerPO_Click)
+Gui.Form.lblBySO.Create(Label,"By Sales Order",True,2430,240,0,405,990,True,0,"Tahoma",8.5,,0,1)
+Gui.Form.lblBySO.BorderStyle(0)
+Gui.Form.lblBySO.ForeColor(-2147483619)
+Gui.Form.lblBySO.Parent("frmSelection")
+Gui.Form.lblBySO.Event(Click,lblBySO_Click)
+Gui.Form.frmByCustomerPO.Create(Frame)
+Gui.Form.frmByCustomerPO.Enabled(True)
+Gui.Form.frmByCustomerPO.Visible(True)
+Gui.Form.frmByCustomerPO.Zorder(0)
+Gui.Form.frmByCustomerPO.Size(5670,1155)
+Gui.Form.frmByCustomerPO.Position(255,195)
+Gui.Form.frmByCustomerPO.Caption("Customer PO")
+Gui.Form.frmByCustomerPO.FontName("Tahoma")
+Gui.Form.frmByCustomerPO.FontSize(10)
+Gui.Form.frmByCustomerPO.BorderStyle(1)
+Gui.Form.frmByCustomerPO.BackColor(-2147483619)
+Gui.Form.frmByCustomerPO.ForeColor(-2147483619)
+Gui.Form.cmdRefreshCustomerPO.Create(Button)
+Gui.Form.cmdRefreshCustomerPO.Enabled(True)
+Gui.Form.cmdRefreshCustomerPO.Visible(True)
+Gui.Form.cmdRefreshCustomerPO.Zorder(0)
+Gui.Form.cmdRefreshCustomerPO.Size(855,375)
+Gui.Form.cmdRefreshCustomerPO.Position(4545,570)
+Gui.Form.cmdRefreshCustomerPO.Caption("Refresh")
+Gui.Form.cmdRefreshCustomerPO.FontName("Tahoma")
+Gui.Form.cmdRefreshCustomerPO.FontSize(8.25)
+Gui.Form.cmdRefreshCustomerPO.Parent("frmByCustomerPO")
+Gui.Form.cmdRefreshCustomerPO.Event(Click,cmdRefreshCustomerPO_Click)
+Gui.Form.txtCustomerPO.Create(TextBox,"",True,3480,330,0,165,600,True,0,"Tahoma",10,,1)
+Gui.Form.txtCustomerPO.Parent("frmByCustomerPO")
+Gui.Form.txtCustomerPO.Event(LostFocus,txtCustomerPO_LostFocus)
+Gui.Form.cmdCustomerPO.Create(Button)
+Gui.Form.cmdCustomerPO.Enabled(True)
+Gui.Form.cmdCustomerPO.Visible(True)
+Gui.Form.cmdCustomerPO.Zorder(0)
+Gui.Form.cmdCustomerPO.Size(540,345)
+Gui.Form.cmdCustomerPO.Position(3795,585)
+Gui.Form.cmdCustomerPO.Caption("^")
+Gui.Form.cmdCustomerPO.FontName("Tahoma")
+Gui.Form.cmdCustomerPO.FontSize(8.25)
+Gui.Form.cmdCustomerPO.Parent("frmByCustomerPO")
+Gui.Form.cmdCustomerPO.Event(Click,BrowseCustomerPO)
+Gui.Form.frmBySalesOrder.Create(Frame)
+Gui.Form.frmBySalesOrder.Enabled(True)
+Gui.Form.frmBySalesOrder.Visible(True)
+Gui.Form.frmBySalesOrder.Zorder(0)
+Gui.Form.frmBySalesOrder.Size(5805,1155)
+Gui.Form.frmBySalesOrder.Position(270,180)
+Gui.Form.frmBySalesOrder.Caption("Sales Order")
+Gui.Form.frmBySalesOrder.BackColor(-2147483619)
+Gui.Form.frmBySalesOrder.ForeColor(-2147483619)
+Gui.Form.frmBySalesOrder.FontName("Tahoma")
+Gui.Form.frmBySalesOrder.FontSize(10)
+Gui.Form.frmBySalesOrder.BorderStyle(1)
+Gui.Form.cmdRefreshSalesOrder.Create(Button)
+Gui.Form.cmdRefreshSalesOrder.Enabled(True)
+Gui.Form.cmdRefreshSalesOrder.Visible(True)
+Gui.Form.cmdRefreshSalesOrder.Zorder(0)
+Gui.Form.cmdRefreshSalesOrder.Size(855,375)
+Gui.Form.cmdRefreshSalesOrder.Position(4635,540)
+Gui.Form.cmdRefreshSalesOrder.Caption("Refresh")
+Gui.Form.cmdRefreshSalesOrder.FontName("Tahoma")
+Gui.Form.cmdRefreshSalesOrder.FontSize(8.25)
+Gui.Form.cmdRefreshSalesOrder.Parent("frmBySalesOrder")
+Gui.Form.cmdRefreshSalesOrder.Event(Click,cmdRefreshSalesOrder_Click)
+Gui.Form.cmdSalesOrder.Create(Button)
+Gui.Form.cmdSalesOrder.Enabled(True)
+Gui.Form.cmdSalesOrder.Visible(True)
+Gui.Form.cmdSalesOrder.Zorder(0)
+Gui.Form.cmdSalesOrder.Size(540,345)
+Gui.Form.cmdSalesOrder.Position(3795,570)
+Gui.Form.cmdSalesOrder.Caption("^")
+Gui.Form.cmdSalesOrder.FontName("Tahoma")
+Gui.Form.cmdSalesOrder.FontSize(8.25)
+Gui.Form.cmdSalesOrder.Parent("frmBySalesOrder")
+Gui.Form.cmdSalesOrder.Event(Click,BrowseSalesOrder)
+Gui.Form.txtSalesOrder.Create(TextBox,"",True,3480,330,0,150,585,True,0,"Tahoma",10,,1)
+Gui.Form.txtSalesOrder.Parent("frmBySalesOrder")
+Gui.Form.txtSalesOrder.Event(LostFocus,txtSalesOrder_LostFocus)
+Gui.Form.cmdIssueSelected.Create(Button)
+Gui.Form.cmdIssueSelected.Enabled(True)
+Gui.Form.cmdIssueSelected.Visible(True)
+Gui.Form.cmdIssueSelected.Zorder(0)
+Gui.Form.cmdIssueSelected.Size(1560,375)
+Gui.Form.cmdIssueSelected.Position(17715,1170)
+Gui.Form.cmdIssueSelected.Caption("Issue Selected")
+Gui.Form.cmdIssueSelected.FontName("Tahoma")
+Gui.Form.cmdIssueSelected.FontSize(8.25)
+Gui.Form.cmdIssueSelected.Anchor(9)
+Gui.Form.cmdIssueSelected.Event(Click,cmdIssueSelected_Click)
+Program.Sub.ScreenSU.End
+
+Program.Sub.Preflight.Start
+V.Global.bLock.Declare
+V.Global.iReq.Declare
+V.Global.sFileName.Declare
+V.Global.lProgID.Declare
+V.Global.iErrorCnt.Declare
+V.Global.bLoadData.Declare
+V.Global.bUseRevision.Declare
+Program.External.Include.Library("450100.lib")
+Program.Sub.Preflight.End
+
+Program.Sub.Main.Start
+'Open WO dashboard displaying Assembly, Chid part to issue, Qty Onhand, Qty Required, Qty Issued, Qty to be Issued
+'Click on the Job, Suffix, Seq will open the Issue Material core screen
+'Click the parts will open the Supply and Demand with No Dollars core screen
+
+F.Intrinsic.Control.Try
+	V.Local.sError.Declare	
+	v.Local.sRet.Declare
+	V.Local.bExist.Declare
+	
+	'Get whether using Revision Level
+	F.Global.General.ReadOption(70008,0,False,0,v.Global.bUseRevision)
+					
+	F.ODBC.Connection!conx.OpenCompanyConnection(600)
+	
+	F.ODBC.Connection!conx.TableExists("GAB_6163_Note",V.Local.bExist)
+	F.Intrinsic.Control.If(V.Local.bExist,=,False)
+		F.ODBC.Connection!conx.Execute("CREATE TABLE GAB_6163_Note (JOB CHAR(6), SUFFIX CHAR(3), SEQ CHAR(6), NOTE CHAR(30));")
+	F.Intrinsic.Control.EndIf
+	
+	'Setting the Program ID
+	V.Global.lProgID.Set(6163)
+	
+	'Called from custom menu item that opens the dashboard
+	F.Intrinsic.Control.CallSub(SetAnchors)
+	Gui.Form.frmByCustomerPO.Visible(True)
+	Gui.Form.frmBySalesOrder.Visible(False)
+	
+	'Loading dictionary
+'	F.Intrinsic.Control.CallSub(GetCustomerPODictionary)
+'	F.Intrinsic.Control.CallSub(GetSalesOrderDictionary)
+
+	'F.Intrinsic.Control.CallSub(Bind)
+	Gui.Form..Show
+
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.String.Build("Project: {0}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}GAB Version: {5}}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	f.Intrinsic.Control.CallSub("Unload")
+F.Intrinsic.Control.EndTry
+Program.Sub.Main.End
+
+Program.Sub.SetAnchors.Start
+F.Intrinsic.Control.Try
+	V.Local.sError.Declare
+	
+	' 1- top  2- Bottom  4- Left  8- Right
+	
+	Gui.Form.frmSelection.Anchor(5)
+	Gui.Form.frmByCustomerPO.Anchor(5)
+	Gui.Form.frmBySalesOrder.Anchor(5)
+	Gui.Form.cmdExport.Anchor(5)
+	Gui.Form.cmdRefresh.Anchor(5)
+	Gui.Form.cmdIssueSelected.Anchor(9)
+	Gui.Form.gsWO.Anchor(15)
+	
+F.Intrinsic.Control.Catch
+	F.Intrinsic.String.Build("Project: {0}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}GAB Version: {5}}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	f.Intrinsic.Control.CallSub("Unload")
+F.Intrinsic.Control.EndTry
+Program.Sub.SetAnchors.End
+
+Program.Sub.Bind.Start
+F.Intrinsic.Control.Try
+	V.Local.sError.Declare
+	V.Local.sQuery.Declare
+	v.Local.bExists.Declare
+	
+	f.Intrinsic.UI.InvokeWaitDialog("Loading....")
+	
+	'Create MainTB
+	f.Intrinsic.Control.If(v.DataTable.MainTB.Exists)
+		f.Data.DataTable.Close("MainTB")
+	f.Intrinsic.Control.EndIf
+	
+'	V.Local.sQuery.Set("SELECT h.Job,h.Suffix,o.Seq,h.Job + '-' + h.Suffix + '-' + o.Seq as JobSuffixSeq,h.Part as ParentPart,h.Location as ParentLoc,h.Part + '-' + h.Location as ParentPartLoc,'' as SortCode,o.Part as PartToIssue,if(o.Locn = '00', '  ', o.Locn) as PartToIssueLoc,concat(o.Part,if(o.Locn = '00', '  ', o.Locn)) as PartToIssueWithLoc,o.UM,Case when o.Hours_Estimated - o.Hours_Actual = 0 then 'Issued' when o.Hours_Estimated - o.Hours_Actual < 0 then 'Over Issued' end as IssueStatus,Case when h.Date_Closed <>  '1900-01-01' then 'Closed' when h.Date_Closed = '1900-01-01' then '' end as FlagClosed,o.OPERATION as OpCode,o.Date_Start,o.Date_Due,o.Description,COALESCE(IET.TEXT, '') as ExtraDescription,if(i.Qty_Onhand is null, 0, i.Qty_Onhand) as OnHand,o.Hours_Estimated as Required,o.Hours_Actual as Issued,o.Hours_Estimated - o.Hours_Actual as ToBeIssued,qty_onhand + QTY_ONORDER_PO + QTY_ONORDER_WO - QTY_REQUIRED as NetQty ,o.Hours_Estimated - o.Hours_Actual as OpenQty,h.Customer_PO,h.Customer,otw.ORDER_NO as SalesOrder, otw.ORDER_LINE as SalesOrderLine,'' as CustomerName,'' as Note FROM V_JOB_HEADER h LEFT JOIN V_JOB_OPERATIONS o ON h.Job = o.Job and h.suffix = o.Suffix LEFT JOIN V_Inventory_Mstr i on o.Part = i.Part and if(o.Locn = '00', '  ', o.Locn) = i.Location LEFT JOIN V_ORDER_TO_WO otw on otw.JOB = h.JOB and otw.SUFFIX = h.SUFFIX LEFT JOIN V_INV_EXTRA_TEXT IET ON IET.PART = O.PART WHERE h.Date_Closed = '1900-01-01' and o.LMO = 'M' and o.SEQ < '995000' Order By o.Part, i.Qty_Onhand")
+	V.Local.sQuery.Set("SELECT h.Job,h.Suffix,o.Seq,h.Job + '-' + h.Suffix + '-' + o.Seq as JobSuffixSeq,h.Part as ParentPart,h.Location as ParentLoc,h.Part + '-' + h.Location as ParentPartLoc,'' as SortCode,o.Part as PartToIssue,if(o.Locn = '00', '  ', o.Locn) as PartToIssueLoc,concat(o.Part,if(o.Locn = '00', '  ', o.Locn)) as PartToIssueWithLoc,o.UM, i.Product_Line as PL, Case when o.Hours_Estimated - o.Hours_Actual = 0 then 'Issued' when o.Hours_Estimated - o.Hours_Actual < 0 then 'Over Issued' end as IssueStatus,Case when h.Date_Closed <>  '1900-01-01' then 'Closed' when h.Date_Closed = '1900-01-01' then '' end as FlagClosed,o.OPERATION as OpCode,COALESCE(RTRIM(CONVERT(REPLACE(REPLACE(REPLACE(VWSC.TEXT,Char(10),' '),Char(13),' '),Char(9),' '),SQL_VARCHAR,1000)),'') as SeqComment,o.Date_Start,o.Date_Due,o.Description,COALESCE(IET.TEXT, '') as ExtraDescription,COALESCE(i.Bin,'') as Bin,if(i.Qty_Onhand is null, 0, i.Qty_Onhand) as OnHand,o.Hours_Estimated as Required,o.Hours_Actual as Issued,o.Hours_Estimated - o.Hours_Actual as ToBeIssued,qty_onhand + QTY_ONORDER_PO + QTY_ONORDER_WO - QTY_REQUIRED as NetQty ,o.Hours_Estimated - o.Hours_Actual as OpenQty,h.Customer_PO,h.Customer,otw.ORDER_NO as SalesOrder, otw.ORDER_LINE as SalesOrderLine,'' as CustomerName,'' as Note FROM V_JOB_HEADER h LEFT JOIN V_JOB_OPERATIONS o ON h.Job = o.Job and h.suffix = o.Suffix LEFT JOIN V_Inventory_Mstr i on o.Part = i.Part and if(o.Locn = '00', '  ', o.Locn) = i.Location LEFT JOIN V_ORDER_TO_WO otw on otw.JOB = h.JOB and otw.SUFFIX = h.SUFFIX LEFT JOIN V_INV_EXTRA_TEXT IET ON IET.PART = O.PART LEFT JOIN V_WO_SEQ_COMMENTS VWSC ON VWSC.WO = o.JOB AND VWSC.WO_SUFFIX = o.SUFFIX AND VWSC.WO_SEQ = o.SEQ WHERE h.Date_Closed = '1900-01-01' and o.LMO = 'M' and o.SEQ < '995000' Order By o.Part, i.Qty_Onhand")
+	f.Data.DataTable.CreateFromSQL("MainTB","conx",V.Local.sQuery,True)
+							
+	'Sort Dictionary
+	f.Data.Dictionary.Exists("SortCodeDict",v.Local.bExists)
+	f.Intrinsic.Control.If(v.Local.bExists,=,True)
+		f.Data.Dictionary.Close("SortCodeDict")
+	f.Intrinsic.Control.EndIf
+	f.Data.Dictionary.CreateFromSQL("SortCodeDict","conx","Select Part + '-' + Location as PartLoc,Code_Sort from V_Inventory_mstr")
+	f.Data.Dictionary.SetDefaultReturn("SortCodeDict","")
+	f.Data.DataTable.FillFromDictionary("MainTB","SortCodeDict","ParentPartLoc","SortCode")
+	f.Data.Dictionary.Close("SortCodeDict")	
+	'Note Dictionary
+	f.Data.Dictionary.Exists("NoteDict",v.Local.bExists)
+	f.Intrinsic.Control.If(v.Local.bExists,=,True)
+		f.Data.Dictionary.Close("NoteDict")
+	f.Intrinsic.Control.EndIf
+	f.Data.Dictionary.CreateFromSQL("NoteDict","conx","Select Job + '-' + Suffix + '-' + Seq as JobSuffixSeq,Note from GAB_6163_Note")
+	f.Data.Dictionary.SetDefaultReturn("NoteDict","")
+	f.Data.DataTable.FillFromDictionary("MainTB","NoteDict","JobSuffixSeq","Note")
+	f.Data.Dictionary.Close("NoteDict")
+	'Customer Name dictionary
+	f.Data.Dictionary.Exists("CustNameDict",v.Local.bExists)
+	f.Intrinsic.Control.If(v.Local.bExists,=,True)
+		f.Data.Dictionary.Close("CustNameDict")
+	f.Intrinsic.Control.EndIf
+	f.Data.Dictionary.CreateFromSQL("CustNameDict","conx","Select Customer,Name_Customer from V_Customer_master")
+	f.Data.Dictionary.SetDefaultReturn("CustNameDict","")
+	f.Data.DataTable.FillFromDictionary("MainTB","CustNameDict","Customer","CustomerName")
+	f.Data.Dictionary.Close("CustNameDict")
+	'Extra Description dictionary
+'	f.Data.Dictionary.Exists("ExtraDescriptionDict",v.Local.bExists)
+'	f.Intrinsic.Control.If(v.Local.bExists,=,True)
+'		f.Data.Dictionary.Close("ExtraDescriptionDict")
+'	f.Intrinsic.Control.EndIf
+'	f.Data.Dictionary.CreateFromSQL("ExtraDescriptionDict","conx","Select Part,Text from V_INV_EXTRA_TEXT")
+'	f.Data.Dictionary.SetDefaultReturn("ExtraDescriptionDict","")
+'	f.Data.DataTable.FillFromDictionary("MainTB","ExtraDescriptionDict","PartToIssue","ExtraDescription")
+'	f.Data.Dictionary.Close("ExtraDescriptionDict")
+	
+	'Add Issue Flag to Data Table
+	F.Data.DataTable.AddColumn("MainTB","IssueQty","Float")
+	F.Data.DataTable.SetValue("MainTB",-1,"IssueQty",0.00)
+	F.Data.DataTable.AddColumn("MainTB","FlagIssue","Boolean")
+	F.Data.DataTable.SetValue("MainTB",-1,"FlagIssue",False)
+	
+	'Add Expression Column (OnHand Qty - ToBeIssued Qty)
+	F.Data.DataTable.AddExpressionColumn("MainTB","InventoryStatus","String","IIF(ToBeIssued = 0, 'Not Applicable', IIF((OnHand - ToBeIssued) >= 0, 'Sufficient', 'Insufficient'))")
+
+		
+	'Bind to grid		
+	gui.Form.gsWO.AddGridviewFromDatatable("GVMain","MainTB")
+	f.Intrinsic.Control.CallSub("Format_Grid")
+	f.Intrinsic.Control.CallSub("Deserialize")
+	gui.Form.gsWO.MainView("GVMain")
+		
+	f.Intrinsic.UI.CloseWaitDialog
+		
+F.Intrinsic.Control.Catch
+	F.Intrinsic.String.Build("Project: {0}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}GAB Version: {5}}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	f.Intrinsic.Control.CallSub("Unload")
+F.Intrinsic.Control.EndTry
+Program.Sub.Bind.End
+
+Program.Sub.BindBySelection.Start
+F.Intrinsic.Control.Try
+	V.Local.sError.Declare
+	V.Local.sQuery.Declare
+	v.Local.bExists.Declare
+	
+	f.Intrinsic.UI.InvokeWaitDialog("Loading....")
+	
+		'Create MainTB
+		f.Intrinsic.Control.If(v.DataTable.MainTB.Exists)
+			f.Data.DataTable.Close("MainTB")
+		f.Intrinsic.Control.EndIf
+		
+		F.Intrinsic.Control.If(V.Screen.Form!frmByCustomerPO.Visible,=,True)
+			'only pull Part WO that the Parent Part WO is still open
+			'f.Data.DataTable.CreateFromSQL("MainTB","conx","SELECT h.Job,h.Suffix,o.Seq,h.Job + '-' + h.Suffix + '-' + o.Seq as JobSuffixSeq,h.Part as ParentPart,h.Location as ParentLoc,h.Part + '-' + h.Location as ParentPartLoc,'' as SortCode,o.Part as PartToIssue,o.Locn as PartToIssueLoc,Case when o.Hours_Estimated - o.Hours_Actual = 0 then 'Issued' when o.Hours_Estimated - o.Hours_Actual < 0 then 'Over Issued' end as IssueStatus,Case when h.Date_Closed <>  '1900-01-01' then 'Closed' when h.Date_Closed = '1900-01-01' then '' end as FlagClosed,o.Date_Start,o.Date_Due,o.Description,i.Qty_Onhand as OnHand,o.Hours_Estimated as Required,o.Hours_Actual as Issued,o.Hours_Estimated - o.Hours_Actual as ToBeIssued,qty_onhand + QTY_ONORDER_PO + QTY_ONORDER_WO - QTY_REQUIRED as NetQty ,o.Hours_Estimated - o.Hours_Actual as OpenQty,h.Customer_PO,h.Customer,'' as CustomerName,'' as Note FROM V_JOB_HEADER h LEFT JOIN V_JOB_OPERATIONS o ON h.Job = o.Job and h.suffix = o.Suffix LEFT JOIN V_Inventory_Mstr i on o.Part = i.Part and o.Locn = i.Location WHERE h.Date_Closed = '1900-01-01' and o.LMO = 'M' and i.Product_Line <> 'RM' Order By o.Part, i.Qty_Onhand",True)
+'			F.Intrinsic.String.Build("SELECT h.Job,h.Suffix,o.Seq,h.Job + '-' + h.Suffix + '-' + o.Seq as JobSuffixSeq,h.Part as ParentPart,h.Location as ParentLoc,h.Part + '-' + h.Location as ParentPartLoc,'' as SortCode,o.Part as PartToIssue,if(o.Locn = '00', '  ', o.Locn) as PartToIssueLoc,concat(o.Part,if(o.Locn = '00', '  ', o.Locn)) as PartToIssueWithLoc,o.UM,Case when o.Hours_Estimated - o.Hours_Actual = 0 then 'Issued' when o.Hours_Estimated - o.Hours_Actual < 0 then 'Over Issued' end as IssueStatus,Case when h.Date_Closed <>  '1900-01-01' then 'Closed' when h.Date_Closed = '1900-01-01' then '' end as FlagClosed,o.OPERATION as OpCode,o.Date_Start,o.Date_Due,o.Description,COALESCE(IET.TEXT, '') as ExtraDescription,if(i.Qty_Onhand is null, 0, i.Qty_Onhand) as OnHand,o.Hours_Estimated as Required,o.Hours_Actual as Issued,o.Hours_Estimated - o.Hours_Actual as ToBeIssued,qty_onhand + QTY_ONORDER_PO + QTY_ONORDER_WO - QTY_REQUIRED as NetQty ,o.Hours_Estimated - o.Hours_Actual as OpenQty,h.Customer_PO,h.Customer,otw.ORDER_NO as SalesOrder, otw.ORDER_LINE as SalesOrderLine,'' as CustomerName,'' as Note FROM V_JOB_HEADER h LEFT JOIN V_JOB_OPERATIONS o ON h.Job = o.Job and h.suffix = o.Suffix LEFT JOIN V_Inventory_Mstr i on o.Part = i.Part and if(o.Locn = '00', '  ', o.Locn) = i.Location LEFT JOIN V_ORDER_TO_WO otw on otw.JOB = h.JOB and otw.SUFFIX = h.SUFFIX LEFT JOIN V_INV_EXTRA_TEXT IET ON IET.PART = O.PART WHERE h.Date_Closed = '1900-01-01' and h.Customer_PO = '{0}' and o.LMO = 'M' and o.SEQ < '995000' Order By o.Part, i.Qty_Onhand",V.Args.sCustomerPO,V.Local.sQuery)
+			F.Intrinsic.String.Build("SELECT h.Job,h.Suffix,o.Seq,h.Job + '-' + h.Suffix + '-' + o.Seq as JobSuffixSeq,h.Part as ParentPart,h.Location as ParentLoc,h.Part + '-' + h.Location as ParentPartLoc,'' as SortCode,o.Part as PartToIssue,if(o.Locn = '00', '  ', o.Locn) as PartToIssueLoc,concat(o.Part,if(o.Locn = '00', '  ', o.Locn)) as PartToIssueWithLoc,o.UM,i.Product_Line as PL, Case when o.Hours_Estimated - o.Hours_Actual = 0 then 'Issued' when o.Hours_Estimated - o.Hours_Actual < 0 then 'Over Issued' end as IssueStatus,Case when h.Date_Closed <>  '1900-01-01' then 'Closed' when h.Date_Closed = '1900-01-01' then '' end as FlagClosed,o.OPERATION as OpCode,COALESCE(RTRIM(CONVERT(REPLACE(REPLACE(REPLACE(VWSC.TEXT,Char(10),' '),Char(13),' '),Char(9),' '),SQL_VARCHAR,1000)),'') as SeqComment,o.Date_Start,o.Date_Due,o.Description,COALESCE(IET.TEXT, '') as ExtraDescription,COALESCE(i.Bin,'') as Bin,if(i.Qty_Onhand is null, 0, i.Qty_Onhand) as OnHand,o.Hours_Estimated as Required,o.Hours_Actual as Issued,o.Hours_Estimated - o.Hours_Actual as ToBeIssued,qty_onhand + QTY_ONORDER_PO + QTY_ONORDER_WO - QTY_REQUIRED as NetQty ,o.Hours_Estimated - o.Hours_Actual as OpenQty,h.Customer_PO,h.Customer,otw.ORDER_NO as SalesOrder, otw.ORDER_LINE as SalesOrderLine,'' as CustomerName,'' as Note FROM V_JOB_HEADER h LEFT JOIN V_JOB_OPERATIONS o ON h.Job = o.Job and h.suffix = o.Suffix LEFT JOIN V_Inventory_Mstr i on o.Part = i.Part and if(o.Locn = '00', '  ', o.Locn) = i.Location LEFT JOIN V_ORDER_TO_WO otw on otw.JOB = h.JOB and otw.SUFFIX = h.SUFFIX LEFT JOIN V_INV_EXTRA_TEXT IET ON IET.PART = O.PART LEFT JOIN V_WO_SEQ_COMMENTS VWSC ON VWSC.WO = o.JOB AND VWSC.WO_SUFFIX = o.SUFFIX AND VWSC.WO_SEQ = o.SEQ WHERE h.Date_Closed = '1900-01-01' and h.Customer_PO = '{0}' and o.LMO = 'M' and o.SEQ < '995000' Order By o.Part, i.Qty_Onhand",V.Args.sCustomerPO,V.Local.sQuery)
+			f.Data.DataTable.CreateFromSQL("MainTB","conx",V.Local.sQuery,True)
+		F.Intrinsic.Control.ElseIf(V.Screen.Form!frmBySalesOrder.Visible,=,True)
+			F.Intrinsic.Control.If(V.Args.sSalesOrder,=,"")
+				'only pull Part WO that the Parent Part WO is still open
+'				F.Intrinsic.String.Build("SELECT h.Job,h.Suffix,o.Seq,h.Job + '-' + h.Suffix + '-' + o.Seq as JobSuffixSeq,h.Part as ParentPart,h.Location as ParentLoc,h.Part + '-' + h.Location as ParentPartLoc,'' as SortCode,o.Part as PartToIssue,if(o.Locn = '00', '  ', o.Locn) as PartToIssueLoc,concat(o.Part,if(o.Locn = '00', '  ', o.Locn)) as PartToIssueWithLoc,o.UM,Case when o.Hours_Estimated - o.Hours_Actual = 0 then 'Issued' when o.Hours_Estimated - o.Hours_Actual < 0 then 'Over Issued' end as IssueStatus,Case when h.Date_Closed <>  '1900-01-01' then 'Closed' when h.Date_Closed = '1900-01-01' then '' end as FlagClosed,o.OPERATION as OpCode,o.Date_Start,o.Date_Due,o.Description,COALESCE(IET.TEXT, '') as ExtraDescription,if(i.Qty_Onhand is null, 0, i.Qty_Onhand) as OnHand,o.Hours_Estimated as Required,o.Hours_Actual as Issued,o.Hours_Estimated - o.Hours_Actual as ToBeIssued,qty_onhand + QTY_ONORDER_PO + QTY_ONORDER_WO - QTY_REQUIRED as NetQty ,o.Hours_Estimated - o.Hours_Actual as OpenQty,h.Customer_PO,h.Customer,otw.ORDER_NO as SalesOrder, otw.ORDER_LINE as SalesOrderLine,'' as CustomerName,'' as Note FROM V_JOB_HEADER h LEFT JOIN V_JOB_OPERATIONS o ON h.Job = o.Job and h.suffix = o.Suffix LEFT JOIN V_Inventory_Mstr i on o.Part = i.Part and if(o.Locn = '00', '  ', o.Locn) = i.Location LEFT JOIN V_ORDER_TO_WO otw on otw.JOB = h.JOB and otw.SUFFIX = h.SUFFIX LEFT JOIN V_INV_EXTRA_TEXT IET ON IET.PART = O.PART WHERE h.Date_Closed = '1900-01-01' and otw.ORDER_NO is null and o.LMO = 'M' and o.SEQ < '995000' Order By o.Part, i.Qty_Onhand",V.Args.sSalesOrder,V.Local.sQuery)
+			F.Intrinsic.String.Build("SELECT h.Job,h.Suffix,o.Seq,h.Job + '-' + h.Suffix + '-' + o.Seq as JobSuffixSeq,h.Part as ParentPart,h.Location as ParentLoc,h.Part + '-' + h.Location as ParentPartLoc,'' as SortCode,o.Part as PartToIssue,if(o.Locn = '00', '  ', o.Locn) as PartToIssueLoc,concat(o.Part,if(o.Locn = '00', '  ', o.Locn)) as PartToIssueWithLoc,o.UM,i.Product_Line as PL,Case when o.Hours_Estimated - o.Hours_Actual = 0 then 'Issued' when o.Hours_Estimated - o.Hours_Actual < 0 then 'Over Issued' end as IssueStatus,Case when h.Date_Closed <>  '1900-01-01' then 'Closed' when h.Date_Closed = '1900-01-01' then '' end as FlagClosed,o.OPERATION as OpCode,COALESCE(RTRIM(CONVERT(REPLACE(REPLACE(REPLACE(VWSC.TEXT,Char(10),' '),Char(13),' '),Char(9),' '),SQL_VARCHAR,1000)),'') as SeqComment,o.Date_Start,o.Date_Due,o.Description,COALESCE(IET.TEXT, '') as ExtraDescription,COALESCE(i.Bin,'') as Bin,if(i.Qty_Onhand is null, 0, i.Qty_Onhand) as OnHand,o.Hours_Estimated as Required,o.Hours_Actual as Issued,o.Hours_Estimated - o.Hours_Actual as ToBeIssued,qty_onhand + QTY_ONORDER_PO + QTY_ONORDER_WO - QTY_REQUIRED as NetQty ,o.Hours_Estimated - o.Hours_Actual as OpenQty,h.Customer_PO,h.Customer,otw.ORDER_NO as SalesOrder, otw.ORDER_LINE as SalesOrderLine,'' as CustomerName,'' as Note FROM V_JOB_HEADER h LEFT JOIN V_JOB_OPERATIONS o ON h.Job = o.Job and h.suffix = o.Suffix LEFT JOIN V_Inventory_Mstr i on o.Part = i.Part and if(o.Locn = '00', '  ', o.Locn) = i.Location LEFT JOIN V_ORDER_TO_WO otw on otw.JOB = h.JOB and otw.SUFFIX = h.SUFFIX LEFT JOIN V_INV_EXTRA_TEXT IET ON IET.PART = O.PART LEFT JOIN V_WO_SEQ_COMMENTS VWSC ON VWSC.WO = o.JOB AND VWSC.WO_SUFFIX = o.SUFFIX AND VWSC.WO_SEQ = o.SEQ WHERE h.Date_Closed = '1900-01-01' and otw.ORDER_NO is null and o.LMO = 'M' and o.SEQ < '995000' Order By o.Part, i.Qty_Onhand",V.Args.sSalesOrder,V.Local.sQuery)
+			F.Intrinsic.Control.Else
+				'only pull Part WO that the Parent Part WO is still open
+'				F.Intrinsic.String.Build("SELECT h.Job,h.Suffix,o.Seq,h.Job + '-' + h.Suffix + '-' + o.Seq as JobSuffixSeq,h.Part as ParentPart,h.Location as ParentLoc,h.Part + '-' + h.Location as ParentPartLoc,'' as SortCode,o.Part as PartToIssue,if(o.Locn = '00', '  ', o.Locn) as PartToIssueLoc,concat(o.Part,if(o.Locn = '00', '  ', o.Locn)) as PartToIssueWithLoc,o.UM,Case when o.Hours_Estimated - o.Hours_Actual = 0 then 'Issued' when o.Hours_Estimated - o.Hours_Actual < 0 then 'Over Issued' end as IssueStatus,Case when h.Date_Closed <>  '1900-01-01' then 'Closed' when h.Date_Closed = '1900-01-01' then '' end as FlagClosed,o.OPERATION as OpCode,o.Date_Start,o.Date_Due,o.Description,COALESCE(IET.TEXT, '') as ExtraDescription,if(i.Qty_Onhand is null, 0, i.Qty_Onhand) as OnHand,o.Hours_Estimated as Required,o.Hours_Actual as Issued,o.Hours_Estimated - o.Hours_Actual as ToBeIssued,qty_onhand + QTY_ONORDER_PO + QTY_ONORDER_WO - QTY_REQUIRED as NetQty ,o.Hours_Estimated - o.Hours_Actual as OpenQty,h.Customer_PO,h.Customer,otw.ORDER_NO as SalesOrder, otw.ORDER_LINE as SalesOrderLine,'' as CustomerName,'' as Note FROM V_JOB_HEADER h LEFT JOIN V_JOB_OPERATIONS o ON h.Job = o.Job and h.suffix = o.Suffix LEFT JOIN V_Inventory_Mstr i on o.Part = i.Part and if(o.Locn = '00', '  ', o.Locn) = i.Location LEFT JOIN V_ORDER_TO_WO otw on otw.JOB = h.JOB and otw.SUFFIX = h.SUFFIX LEFT JOIN V_INV_EXTRA_TEXT IET ON IET.PART = O.PART WHERE h.Date_Closed = '1900-01-01' and otw.ORDER_NO = '{0}' and o.LMO = 'M' and o.SEQ < '995000' Order By o.Part, i.Qty_Onhand",V.Args.sSalesOrder,V.Local.sQuery)
+			F.Intrinsic.String.Build("SELECT h.Job,h.Suffix,o.Seq,h.Job + '-' + h.Suffix + '-' + o.Seq as JobSuffixSeq,h.Part as ParentPart,h.Location as ParentLoc,h.Part + '-' + h.Location as ParentPartLoc,'' as SortCode,o.Part as PartToIssue,if(o.Locn = '00', '  ', o.Locn) as PartToIssueLoc,concat(o.Part,if(o.Locn = '00', '  ', o.Locn)) as PartToIssueWithLoc,o.UM,i.Product_Line as PL,Case when o.Hours_Estimated - o.Hours_Actual = 0 then 'Issued' when o.Hours_Estimated - o.Hours_Actual < 0 then 'Over Issued' end as IssueStatus,Case when h.Date_Closed <>  '1900-01-01' then 'Closed' when h.Date_Closed = '1900-01-01' then '' end as FlagClosed,o.OPERATION as OpCode,COALESCE(RTRIM(CONVERT(REPLACE(REPLACE(REPLACE(VWSC.TEXT,Char(10),' '),Char(13),' '),Char(9),' '),SQL_VARCHAR,1000)),'') as SeqComment,o.Date_Start,o.Date_Due,o.Description,COALESCE(IET.TEXT, '') as ExtraDescription,COALESCE(i.Bin,'') as Bin,if(i.Qty_Onhand is null, 0, i.Qty_Onhand) as OnHand,o.Hours_Estimated as Required,o.Hours_Actual as Issued,o.Hours_Estimated - o.Hours_Actual as ToBeIssued,qty_onhand + QTY_ONORDER_PO + QTY_ONORDER_WO - QTY_REQUIRED as NetQty ,o.Hours_Estimated - o.Hours_Actual as OpenQty,h.Customer_PO,h.Customer,otw.ORDER_NO as SalesOrder, otw.ORDER_LINE as SalesOrderLine,'' as CustomerName,'' as Note FROM V_JOB_HEADER h LEFT JOIN V_JOB_OPERATIONS o ON h.Job = o.Job and h.suffix = o.Suffix LEFT JOIN V_Inventory_Mstr i on o.Part = i.Part and if(o.Locn = '00', '  ', o.Locn) = i.Location LEFT JOIN V_ORDER_TO_WO otw on otw.JOB = h.JOB and otw.SUFFIX = h.SUFFIX LEFT JOIN V_INV_EXTRA_TEXT IET ON IET.PART = O.PART LEFT JOIN V_WO_SEQ_COMMENTS VWSC ON VWSC.WO = o.JOB AND VWSC.WO_SUFFIX = o.SUFFIX AND VWSC.WO_SEQ = o.SEQ WHERE h.Date_Closed = '1900-01-01' and otw.ORDER_NO = '{0}' and o.LMO = 'M' and o.SEQ < '995000' Order By o.Part, i.Qty_Onhand",V.Args.sSalesOrder,V.Local.sQuery)
+			F.Intrinsic.Control.EndIf
+			f.Data.DataTable.CreateFromSQL("MainTB","conx",V.Local.sQuery,True)
+		F.Intrinsic.Control.EndIf
+					
+		'Sort Dictionary
+		f.Data.Dictionary.Exists("SortCodeDict",v.Local.bExists)
+		f.Intrinsic.Control.If(v.Local.bExists,=,True)
+			f.Data.Dictionary.Close("SortCodeDict")
+		f.Intrinsic.Control.EndIf
+		f.Data.Dictionary.CreateFromSQL("SortCodeDict","conx","Select Part + '-' + Location as PartLoc,Code_Sort from V_Inventory_mstr")
+		f.Data.Dictionary.SetDefaultReturn("SortCodeDict","")
+		f.Data.DataTable.FillFromDictionary("MainTB","SortCodeDict","ParentPartLoc","SortCode")
+		f.Data.Dictionary.Close("SortCodeDict")	
+		'Note Dictionary
+		f.Data.Dictionary.Exists("NoteDict",v.Local.bExists)
+		f.Intrinsic.Control.If(v.Local.bExists,=,True)
+			f.Data.Dictionary.Close("NoteDict")
+		f.Intrinsic.Control.EndIf
+		f.Data.Dictionary.CreateFromSQL("NoteDict","conx","Select Job + '-' + Suffix + '-' + Seq as JobSuffixSeq,Note from GAB_6163_Note")
+		f.Data.Dictionary.SetDefaultReturn("NoteDict","")
+		f.Data.DataTable.FillFromDictionary("MainTB","NoteDict","JobSuffixSeq","Note")
+		f.Data.Dictionary.Close("NoteDict")
+		'Customer Name dictionary
+		f.Data.Dictionary.Exists("CustNameDict",v.Local.bExists)
+		f.Intrinsic.Control.If(v.Local.bExists,=,True)
+			f.Data.Dictionary.Close("CustNameDict")
+		f.Intrinsic.Control.EndIf
+		f.Data.Dictionary.CreateFromSQL("CustNameDict","conx","Select Customer,Name_Customer from V_Customer_master")
+		f.Data.Dictionary.SetDefaultReturn("CustNameDict","")
+		f.Data.DataTable.FillFromDictionary("MainTB","CustNameDict","Customer","CustomerName")
+		f.Data.Dictionary.Close("CustNameDict")
+'		'Extra Description dictionary
+'		f.Data.Dictionary.Exists("ExtraDescriptionDict",v.Local.bExists)
+'		f.Intrinsic.Control.If(v.Local.bExists,=,True)
+'			f.Data.Dictionary.Close("ExtraDescriptionDict")
+'		f.Intrinsic.Control.EndIf
+'		f.Data.Dictionary.CreateFromSQL("ExtraDescriptionDict","conx","Select Part,Text from V_INV_EXTRA_TEXT")
+'		f.Data.Dictionary.SetDefaultReturn("ExtraDescriptionDict","")
+'		f.Data.DataTable.FillFromDictionary("MainTB","ExtraDescriptionDict","PartToIssue","ExtraDescription")
+'		f.Data.Dictionary.Close("ExtraDescriptionDict")
+		
+		'Add Issue Flag to Data Table
+		F.Data.DataTable.AddColumn("MainTB","IssueQty","Float")
+		F.Data.DataTable.SetValue("MainTB",-1,"IssueQty",0.00)
+		F.Data.DataTable.AddColumn("MainTB","FlagIssue","Boolean")
+		F.Data.DataTable.SetValue("MainTB",-1,"FlagIssue",False)
+		
+		'Add Expression Column (OnHand Qty - ToBeIssued Qty)
+		F.Data.DataTable.AddExpressionColumn("MainTB","InventoryStatus","String","IIF(ToBeIssued = 0, 'Not Applicable', IIF((OnHand - ToBeIssued) >= 0, 'Sufficient', 'Insufficient'))")
+
+		'Bind to grid		
+		gui.Form.gsWO.AddGridviewFromDatatable("GVMain","MainTB")
+		f.Intrinsic.Control.CallSub("Format_Grid")
+		gui.Form.gsWO.MainView("GVMain")
+		f.Intrinsic.Control.If(v.DataTable.MainTB.Exists)
+		f.Intrinsic.Control.AndIf(v.DataTable.MainTB.RowCount,>,0)
+			v.Global.bLoadData.Set(True)
+			f.Intrinsic.Control.CallSub("Deserialize")
+		f.Intrinsic.Control.EndIf
+		
+		
+	f.Intrinsic.UI.CloseWaitDialog
+		
+F.Intrinsic.Control.Catch
+	F.Intrinsic.String.Build("Project: {0}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}GAB Version: {5}}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	f.Intrinsic.Control.CallSub("Unload")
+F.Intrinsic.Control.EndTry
+Program.Sub.BindBySelection.End
+
+Program.Sub.gsWO_RowCellClick.Start
+f.Intrinsic.Control.Try
+	v.Local.sError.Declare
+	v.Local.sSQL.Declare
+	v.Local.sHold.Declare
+	V.Local.bEdit.Declare
+
+	f.Intrinsic.Control.If(v.Args.Column,=,"Job",or,v.Args.Column,=,"Suffix",v.Args.Column,=,"Seq")
+		F.Intrinsic.Control.BlockEvents
+		f.Intrinsic.UI.InvokeWaitDialog("Opening Issue Material...")
+		F.Intrinsic.String.Build("{0}!*!{1}!*! !*! !*! !*! !*! ",v.DataTable.MainTB(v.Args.RowIndex).Job!FieldValString,v.DataTable.MainTB(v.Args.RowIndex).Suffix!FieldValString,V.Local.sSQL)
+		f.Intrinsic.UI.CloseWaitDialog
+		F.Global.General.CallWrapperSync(450150,V.Local.sSQL)
+'		f.Intrinsic.UI.CloseWaitDialog
+'		F.Intrinsic.Control.If(V.Screen.Form!frmByCustomerPO.Visible,=,True,AND,V.Screen.Form!txtCustomerPO.Text.Trim,<>,"")
+'			F.Intrinsic.Control.CallSub("cmdRefreshCustomerPO_Click")
+'		F.Intrinsic.Control.ElseIf(V.Screen.Form!frmBySalesOrder.Visible,=,True,AND,V.Screen.Form!txtSalesOrder.Text.Trim,<>,"")
+'			F.Intrinsic.Control.CallSub("cmdRefreshSalesOrder_Click")
+'		F.Intrinsic.Control.Else
+'			F.Intrinsic.Control.CallSub("cmdRefresh_Click")
+'		F.Intrinsic.Control.EndIf
+		F.Intrinsic.Control.UnBlockEvents
+		f.Intrinsic.Control.ExitSub
+	f.Intrinsic.Control.EndIf
+	
+	'Open Supply and Demand screen for the ParentPart
+	f.Intrinsic.Control.If(v.Args.Column,=,"ParentPart")
+		F.Intrinsic.Control.BlockEvents
+		f.Intrinsic.UI.InvokeWaitDialog("Opening Supply and Demand...")
+		f.Intrinsic.String.Build("{0}!*!{1}!*!W",v.DataTable.MainTB(v.Args.RowIndex).ParentPart!FieldValString,v.DataTable.MainTB(v.Args.RowIndex).ParentLoc!FieldValString,v.Local.sHold)
+		f.Intrinsic.UI.CloseWaitDialog
+		F.Global.General.CallWrapperSync(300011,v.Local.sHold)
+'		f.Intrinsic.UI.CloseWaitDialog
+		F.Intrinsic.Control.UnBlockEvents
+		f.Intrinsic.Control.ExitSub
+	f.Intrinsic.Control.EndIf
+	
+	'Open Supply and Demand screen for the underlined PartToIssue
+	f.Intrinsic.Control.If(v.Args.Column,=,"PartToIssue")	
+		F.Intrinsic.Control.BlockEvents
+		f.Intrinsic.UI.InvokeWaitDialog("Opening Supply and Demand...")
+		f.Intrinsic.String.Build("{0}!*!{1}!*!W",v.DataTable.MainTB(v.Args.RowIndex).PartToIssue!FieldValString,v.DataTable.MainTB(v.Args.RowIndex).PartToIssueLoc!FieldValString,v.Local.sHold)
+		f.Intrinsic.UI.CloseWaitDialog
+		F.Global.General.CallWrapperSync(300011,v.Local.sHold)
+'		f.Intrinsic.UI.CloseWaitDialog
+		F.Intrinsic.Control.UnBlockEvents
+		f.Intrinsic.Control.ExitSub
+	f.Intrinsic.Control.EndIf
+		
+F.Intrinsic.Control.Catch
+	F.Intrinsic.String.Build("Project: {0}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}GAB Version: {5}}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	f.Intrinsic.Control.CallSub("Unload")
+F.Intrinsic.Control.EndTry
+Program.Sub.gsWO_RowCellClick.End
+
+Program.Sub.Format_Grid.Start
+f.Intrinsic.Control.Try
+	v.Local.sError.Declare
+	v.Local.sLableTotal.Declare
+	v.Local.iCnt.Declare
+	
+	Gui.Form.gsWO.SuspendLayout()
+	'General format for the grid
+	Gui.Form.gsWO.SetGridViewProperty("GVMain","AllowSort",True)
+	Gui.Form.gsWO.SetGridViewProperty("GVMain","AllowFilter",True)
+	Gui.Form.gsWO.SetGridViewProperty("GVMain","OptionsFindAlwaysVisible",True)
+	Gui.Form.gsWO.SetGridViewProperty("GVMain","EnableAppearanceOddRow",False)
+	Gui.Form.gsWO.SetGridViewProperty("GVMain","OptionsViewShowAutoFilterRow",True)
+	
+	Gui.Form.gsWO.SetGridViewProperty("GVMain","MultiSelect",True)
+	Gui.Form.gsWO.SetGridViewProperty("GVMain","OptionBehaviorEditable",True)
+	Gui.Form.gsWO.SetGridViewProperty("GVMain","OptionsDetailShowDetailTabs",True)
+	Gui.Form.gsWO.SetGridViewProperty("GVMain","OptionsViewShowGroupPanel",True)
+	
+	Gui.Form.gsWO.SetGridViewProperty("GVMain","AllowColumnResizing",True)
+	Gui.Form.gsWO.SetGridViewProperty("GVMain","OptionsViewColumnAutoWidth",False)
+'	Gui.Form.gsWO.SetGridViewProperty("GVMain","ColumnPanelRowHeight","35")	
+		
+	Gui.Form.gsWO.SetGridViewProperty("GVMain","MultiSelectMode",0)
+	
+	'Added: JobSuffixSeq,Note,CustomerName
+	'Invisible
+	f.Intrinsic.Control.CallSub(FormatBulk,"GS","gsWO","GV","GVMain","sInputColumns","ParentLoc,PartToIssueLoc,ParentPartLoc,JobSuffixSeq,Customer,PartToIssueWithLoc,InventoryStatus","sProperty","Invisible")
+	'Width	
+	f.Intrinsic.Control.CallSub(FormatBulk,"GS","gsWO","GV","GVMain","sInputColumns","Job,Suffix,Seq,FlagClosed,Customer","sProperty","Width","sWidth","50")
+	f.Intrinsic.Control.CallSub(FormatBulk,"GS","gsWO","GV","GVMain","sInputColumns","ParentPart,Customer_PO,ParentPartLoc","sProperty","Width","sWidth","130")
+	f.Intrinsic.Control.CallSub(FormatBulk,"GS","gsWO","GV","GVMain","sInputColumns","PartToIssue","sProperty","Width","sWidth","145")
+	f.Intrinsic.Control.CallSub(FormatBulk,"GS","gsWO","GV","GVMain","sInputColumns","Date_Start,Date_Due","sProperty","Width","sWidth","70")
+	f.Intrinsic.Control.CallSub(FormatBulk,"GS","gsWO","GV","GVMain","sInputColumns","IssueStatus,SortCode,OpCode,InventoryStatus,Bin","sProperty","Width","sWidth","65")
+	f.Intrinsic.Control.CallSub(FormatBulk,"GS","gsWO","GV","GVMain","sInputColumns","Description,JobSuffixSeq,Note,CustomerName","sProperty","Width","sWidth","180")
+	f.Intrinsic.Control.CallSub(FormatBulk,"GS","gsWO","GV","GVMain","sInputColumns","ExtraDescription","sProperty","Width","sWidth","250")
+	f.Intrinsic.Control.CallSub(FormatBulk,"GS","gsWO","GV","GVMain","sInputColumns","SeqComment","sProperty","Width","sWidth","350")
+	f.Intrinsic.Control.CallSub(FormatBulk,"GS","gsWO","GV","GVMain","sInputColumns","Onhand,Required,Issued,ToBeIssued,OpenQty,NetQty","sProperty","Width","sWidth","100")
+	f.Intrinsic.Control.CallSub(FormatBulk,"GS","gsWO","GV","GVMain","sInputColumns","SalesOrder,SalesOrderLine","sProperty","Width","sWidth","60")
+	f.Intrinsic.Control.CallSub(FormatBulk,"GS","gsWO","GV","GVMain","sInputColumns","IssueQty","sProperty","Width","sWidth","100")
+	f.Intrinsic.Control.CallSub(FormatBulk,"GS","gsWO","GV","GVMain","sInputColumns","FlagIssue","sProperty","Width","sWidth","80")
+	f.Intrinsic.Control.CallSub(FormatBulk,"GS","gsWO","GV","GVMain","sInputColumns","UM","sProperty","Width","sWidth","30")
+	f.Intrinsic.Control.CallSub(FormatBulk,"GS","gsWO","GV","GVMain","sInputColumns","PL","sProperty","Width","sWidth","30")
+	
+	'Caption
+	f.Intrinsic.Control.CallSub(FormatBulk,"GS","gsWO","GV","GVMain","sInputColumns","ParentPart@!@Header Part,PartToIssue@!@Part to Issue,UM@!@UM,OpCode@!@Op Code,Date_Start@!@Start Date,Date_Due@!@Due Date,Description@!@Description,ExtraDescription@!@Extra Description,OpenQty@!@Open Qty,Customer_PO@!@Customer PO,IssueStatus@!@Status,FlagClosed@!@Closed,NetQty@!@Net Qty,ToBeIssued@!@To be Issued,SortCode@!@Sort Code,ParentPartLoc@!@HeaderPartLoc,CustomerName@!@Customer Name,SalesOrder@!@SO,SalesOrderLine@!@SO Line,FlagIssue@!@Issue,IssueQty@!@Issue Qty,InventoryStatus@!@Inventory Status,Bin@!@Bin,SeqComment@!@Job Seq Comment","sProperty","Caption")		
+	'Header Font bold
+	f.Intrinsic.Control.CallSub(FormatBulk,"GS","gsWO","GV","GVMain","sInputColumns","Job,Suffix,Seq,JobSuffixSeq,Note,Customer,CustomerName,ParentPart,PartToIssue,UM,PL,OpCode,Date_Start,Date_Due,Description,ExtraDescription,Onhand,Required,Issued,OpenQty,Customer_PO,IssueStatus,FlagClosed,NetQty,ToBeIssued,SortCode,ParentPartLoc,SalesOrder,SalesOrderLine,FlagIssue,IssueQty,InventoryStatus,SeqComment,Bin","sProperty","HeaderFontBold")	
+	'For_Row_CellClick
+	f.Intrinsic.Control.CallSub(FormatBulk,"GS","gsWO","GV","GVMain","sInputColumns","Job,Suffix,Seq,ParentPart,PartToIssue","sProperty","For_RowCell_Click")
+	'For_CellValue_Changed
+	f.Intrinsic.Control.CallSub(FormatBulk,"GS","gsWO","GV","GVMain","sInputColumns","Note,IssueQty,FlagIssue","sProperty","For_CellValue_Changed")
+	'HeaderHAlignment_Far	
+	f.Intrinsic.Control.CallSub(FormatBulk,"GS","gsWO","GV","GVMain","sInputColumns","Onhand,Required,Issued,OpenQty,NetQty,ToBeIssued,IssueQty","sProperty","HeaderAllign_Far")
+	'Format Display Numeric
+	f.Intrinsic.Control.CallSub(FormatBulk,"GS","gsWO","GV","GVMain","sInputColumns","Onhand,Required,Issued,OpenQty,ToBeIssued,IssueQty","sProperty","Decimal_1")	
+	'Fixed columns left
+	f.Intrinsic.Control.CallSub(FormatBulk,"GS","gsWO","GV","GVMain","sInputColumns","Job,Suffix,Seq,ParentPart,SortCode,PartToIssue,UM,IssueStatus,FlagClosed,Customer_PO,SalesOrder,SalesOrderLine","sProperty","FixedColumn_Left")
+	'Fixed columns right
+	f.Intrinsic.Control.CallSub(FormatBulk,"GS","gsWO","GV","GVMain","sInputColumns","FlagIssue,IssueQty","sProperty","FixedColumn_Right")
+	'Columns clickable
+	f.Intrinsic.Control.CallSub(FormatBulk,"GS","gsWO","GV","GVMain","sInputColumns","Job,Suffix,Seq,ParentPart,PartToIssue","sProperty","Clickable")
+	
+	'Display date
+	Gui.Form.gsWO.SetColumnProperty("GVMain","Date_Start","DisplayCustomDatetime","d")
+	Gui.Form.gsWO.SetColumnProperty("GVMain","Date_Due","DisplayCustomDatetime","d")
+	
+	'Set Backcolor column	
+	Gui.Form.gsWO.SetColumnProperty("GVMain","Note","CellBackColor","#F5F5DC")
+	
+'	'StyleFormatCondition based on RemainingQty
+	Gui.Form.gsWO.AddStyleFormatCondition("GVMain","InventoryStatus","StatusInsufficient","Equal","Insufficient")
+	Gui.Form.gsWO.SetStyleFormatConditionProperty("GVMain","InventoryStatus","StatusInsufficient","BackColor","LightPink")
+	Gui.Form.gsWO.SetStyleFormatConditionProperty("GVmain","InventoryStatus","StatusInsufficient","ApplyToRow", True)
+	
+	Gui.Form.gsWO.AddStyleFormatCondition("GVMain","InventoryStatus","StatusSufficient","Equal","Sufficient")
+	Gui.Form.gsWO.SetStyleFormatConditionProperty("GVMain","InventoryStatus","StatusSufficient","BackColor","LightGreen")
+	Gui.Form.gsWO.SetStyleFormatConditionProperty("GVmain","InventoryStatus","StatusSufficient","ApplyToRow", True)
+		
+'	f.Intrinsic.Control.For(v.Local.iCnt,0,v.DataTable.MainTB.RowCount--,1)
+'		f.Intrinsic.Control.If(v.DataTable.MainTB(v.Local.iCnt).ToBeIssued!FieldValFloat,>,0,and,v.DataTable.MainTB(v.Local.iCnt).OnHand!FieldValFloat,>=,v.DataTable.MainTB(v.Local.iCnt).ToBeIssued!FieldValFloat)
+'			Gui.Form.gsWO.setRowAppearance("GVMain",v.Local.iCnt,"BackColor","LightGreen")
+'		f.Intrinsic.Control.Elseif(v.DataTable.MainTB(v.Local.iCnt).ToBeIssued!FieldValFloat,>,0,and,v.DataTable.MainTB(v.Local.iCnt).OnHand!FieldValFloat,<,v.DataTable.MainTB(v.Local.iCnt).ToBeIssued!FieldValFloat)
+'			Gui.Form.gsWO.setRowAppearance("GVMain",v.Local.iCnt,"BackColor","LightPink")
+'		f.Intrinsic.Control.EndIf
+'	f.Intrinsic.Control.Next(v.Local.iCnt)
+	
+	gui.Form.gsWO.ResumeLayout()
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.String.Build("Project: {0}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}GAB Version: {5}}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)	
+	f.Intrinsic.Control.CallSub("Unload")
+F.Intrinsic.Control.EndTry
+Program.Sub.Format_Grid.End
+
+Program.Sub.FormatBulk.Start
+f.Intrinsic.Control.Try
+	V.Local..BulkDeclareString(sError,sColumns,sHold)
+	v.Local..BulkDeclareLong(iCnt)
+	
+	f.Intrinsic.String.Split(v.Args.sInputColumns,",",v.Local.sColumns)
+	f.Intrinsic.Control.For(v.Local.iCnt,0,v.Local.sColumns.UBound,1)
+		F.Intrinsic.Control.SelectCase(v.Args.sProperty)
+			F.Intrinsic.Control.Case("MinWidth")
+				gui.Form.[v.Args.GS].SetColumnProperty(v.Args.GV,v.Local.sColumns(v.Local.iCnt),"MinWidth",v.Args.sWidth)
+			F.Intrinsic.Control.Case("MaxWidth")
+				gui.Form.[v.Args.GS].SetColumnProperty(v.Args.GV,v.Local.sColumns(v.Local.iCnt),"MaxWidth",v.Args.sWidth)
+			F.Intrinsic.Control.Case("Width")
+				gui.Form.[v.Args.GS].SetColumnProperty(v.Args.GV,v.Local.sColumns(v.Local.iCnt),"Width",v.Args.sWidth)
+			F.Intrinsic.Control.Case("Invisible")
+				gui.Form.[v.Args.GS].SetColumnProperty(v.Args.GV,v.Local.sColumns(v.Local.iCnt),"Visible",False)
+			F.Intrinsic.Control.Case("VisibleIndex")
+				gui.Form.[v.Args.GS].SetColumnProperty(v.Args.GV,v.Local.sColumns(v.Local.iCnt),"VisibleIndex",v.Local.iCnt)
+			F.Intrinsic.Control.Case("Caption")
+				f.Intrinsic.String.Split(v.Local.sColumns(v.Local.iCnt),"@!@",v.Local.sHold)
+				gui.Form.[v.Args.GS].SetColumnProperty(v.Args.GV,v.Local.sHold(0),"Caption",v.Local.sHold(1))
+			F.Intrinsic.Control.Case("HeaderAllign_Far")
+				gui.Form.[v.Args.GS].SetColumnProperty(v.Args.GV,v.Local.sColumns(v.Local.iCnt),"HeaderHAlignment","Far")
+			F.Intrinsic.Control.Case("HeaderFontBold")	
+				gui.Form.[v.Args.GS].SetColumnProperty(v.Args.GV,v.Local.sColumns(v.Local.iCnt),"HeaderFontBold",True)
+			F.Intrinsic.Control.Case("Decimal_1")	
+				gui.Form.[v.Args.GS].SetColumnProperty(v.Args.GV,v.Local.sColumns(v.Local.iCnt),"DisplayCustomNumeric","###,###,###,##0.00")
+			f.Intrinsic.Control.Case("For_CellValue_Changed")
+				gui.Form.[v.Args.GS].SetColumnProperty(v.Args.GV,v.Local.sColumns(v.Local.iCnt),"AllowEdit",True)	
+				gui.Form.[v.Args.GS].SetColumnProperty(v.Args.GV,v.Local.sColumns(v.Local.iCnt),"ReadOnly",False)
+			f.Intrinsic.Control.Case("For_RowCell_Click")
+				gui.Form.[v.Args.GS].SetColumnProperty(v.Args.GV,v.Local.sColumns(v.Local.iCnt),"AllowEdit",False)	
+				gui.Form.[v.Args.GS].SetColumnProperty(v.Args.GV,v.Local.sColumns(v.Local.iCnt),"ReadOnly",True)
+			f.Intrinsic.Control.Case("FixedColumn_Left")
+				gui.Form.[v.Args.GS].SetColumnProperty(v.Args.GV,v.Local.sColumns(v.Local.iCnt),"Fixed","Left")
+			f.Intrinsic.Control.Case("FixedColumn_Right")
+				gui.Form.[v.Args.GS].SetColumnProperty(v.Args.GV,v.Local.sColumns(v.Local.iCnt),"Fixed","Right")
+			f.Intrinsic.Control.Case("Clickable")
+				gui.Form.[v.Args.GS].SetColumnProperty(v.Args.GV,v.Local.sColumns(v.Local.iCnt),"CellForeColor","Blue")	
+'				gui.Form.[v.Args.GS].SetColumnProperty(v.Args.GV,v.Local.sColumns(v.Local.iCnt),"CellFontBold",True)	
+			F.Intrinsic.Control.EndSelect		
+	f.Intrinsic.Control.Next(v.Local.iCnt)
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.String.Build("Project: {0}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}GAB Version: {5}}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	f.Intrinsic.Control.CallSub("Unload")
+F.Intrinsic.Control.EndTry
+Program.Sub.FormatBulk.End
+
+Program.Sub.UnLoad.Start
+f.Intrinsic.Control.Try
+	v.Local.sError.Declare
+
+	F.Intrinsic.Control.If(V.ODBC.conx.State,=,1)
+		F.ODBC.Connection!conx.close
+	F.Intrinsic.Control.EndIf
+	
+	F.Intrinsic.Control.If(V.DataTable.MainTB.Exists,=,True)
+		F.Data.DataTable.Close("MainTB")
+	F.Intrinsic.Control.EndIf
+	
+	f.Intrinsic.Control.End
+
+F.Intrinsic.Control.Catch
+	Function.Intrinsic.String.Build("Subroutine Error {0}{0}Subroutine: {1}{0}Error Occurred {2} with description {3}",V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.End	
+F.Intrinsic.Control.EndTry
+Program.Sub.UnLoad.End
+
+Program.Sub.cmdExport_Click.Start
+F.Intrinsic.Control.Try
+	V.Local.sError.Declare
+	
+ 	V.Local.sFileExport.Declare
+    V.Local.bExcel.Declare
+    V.Local.bFileLocked.Declare
+    V.Local.sMsg.Declare
+	
+	F.Intrinsic.Control.BlockEvents
+	
+    F.Automation.MSExcel.CheckPresence(V.Local.bExcel)
+
+    F.Intrinsic.Control.If(V.Local.bExcel)
+        F.Intrinsic.String.Build("{0}\GAB_6163_OpenWOs_{1}.xlsx",V.Caller.LocalGssTempDir,v.Ambient.Now.FormatMMDDYYYYHhNnSs,V.Local.sFileExport)
+        F.Intrinsic.File.IsFileLocked(V.Local.sFileExport,V.Local.bFileLocked)
+        F.Intrinsic.Control.If(V.Local.bFileLocked)
+            F.Intrinsic.String.Build("File is already open. Please close and export again.{0}File: {1}",V.Ambient.NewLine,V.Local.sFileExport,V.Local.sMsg)
+            F.Intrinsic.UI.Msgbox(V.Local.sMsg,"File In Use")
+        F.Intrinsic.Control.Else
+            Gui.Form.gsWO.Export(V.Local.sFileExport,"xlsx")
+            F.Intrinsic.Task.ShellExec(0,"",V.Local.sFileExport,"","",1)
+        F.Intrinsic.Control.EndIf
+    F.Intrinsic.Control.Else
+        F.Intrinsic.String.Build("{0}\GAB_6163_OpenWOs_{1}.xlsx",V.Caller.LocalGssTempDir,v.Ambient.Now.FormatMMDDYYHhNnSs,V.Local.sFileExport)
+        F.Intrinsic.File.IsFileLocked(V.Local.sFileExport,V.Local.bFileLocked)
+        F.Intrinsic.Control.If(V.Local.bFileLocked)
+            F.Intrinsic.String.Build("File is already open. Please close and export again.{0}File: {1}",V.Ambient.NewLine,V.Local.sFileExport,V.Local.sMsg)
+            F.Intrinsic.UI.Msgbox(V.Local.sMsg,"File In Use")
+        F.Intrinsic.Control.Else
+            Gui.Form.gsWO.Export(V.Local.sFileExport,"csv")
+        F.Intrinsic.Control.EndIf
+        F.Intrinsic.Task.ShellExec(0,"",V.Local.sFileExport,"","",1)
+    F.Intrinsic.Control.EndIf
+    
+    F.Intrinsic.Control.UnBlockEvents
+	
+F.Intrinsic.Control.Catch
+	F.Intrinsic.String.Build("Project: {0}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}GAB Version: {5}}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	f.Intrinsic.Control.CallSub("Unload")
+F.Intrinsic.Control.EndTry
+Program.Sub.cmdExport_Click.End
+
+Program.Sub.cmdRefresh_Click.Start
+F.Intrinsic.Control.Try
+	V.Local.sError.Declare
+	
+	F.Intrinsic.Control.BlockEvents
+	Gui.Form.txtCustomerPO.Text("")
+	Gui.Form.txtSalesOrder.Text("")
+	F.Intrinsic.Control.CallSub("Bind")
+	F.Intrinsic.Control.UnBlockEvents
+	
+F.Intrinsic.Control.Catch
+	F.Intrinsic.String.Build("Project: {0}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}GAB Version: {5}}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	f.Intrinsic.Control.CallSub("Unload")
+F.Intrinsic.Control.EndTry
+Program.Sub.cmdRefresh_Click.End
+
+Program.Sub.Form_UnLoad.Start
+F.Intrinsic.Control.Try
+	V.Local.sError.Declare
+	
+	'Serialize before closing all
+	f.Intrinsic.Control.If(v.Global.bLoadData)
+		f.Intrinsic.Control.CallSub(Serialize)	
+	f.Intrinsic.Control.EndIf
+	f.Intrinsic.Control.CallSub("Unload")
+	
+F.Intrinsic.Control.Catch
+	F.Intrinsic.String.Build("Project: {0}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}GAB Version: {5}}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	f.Intrinsic.Control.CallSub("Unload")
+F.Intrinsic.Control.EndTry
+Program.Sub.Form_UnLoad.End
+
+Program.Sub.Deserialize.Start
+f.Intrinsic.Control.Try
+	V.Local.sError.Declare
+	V.Local.sSerialize.Declare	
+	
+	'gvAllShip
+	F.Global.Registry.ReadValue(V.Caller.User,V.Caller.CompanyCode,"GVMain",V.Global.lProgID,1000,6,"",V.Local.sSerialize)
+	F.Intrinsic.Control.If(V.Local.sSerialize.Trim,<>,"")
+		Gui.Form.gsWO.Deserialize(V.Local.sSerialize)
+	F.Intrinsic.Control.EndIf	
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.String.Build("Project: {0}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}GAB Version: {5}}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	f.Intrinsic.Control.CallSub("Unload")
+F.Intrinsic.Control.EndTry
+Program.Sub.Deserialize.End
+
+Program.Sub.Serialize.Start
+f.Intrinsic.Control.Try
+	V.Local.sError.Declare	
+	V.Local.sSerialize.Declare
+	v.Local.sSQL.Declare	
+	v.Local.sUserID.Declare
+	
+	F.Global.Security.GetUserID(v.Caller.User,v.Caller.CompanyCode,v.Local.sUserID)
+	
+	'Delete old registry records
+	F.ODBC.Connection!common.OpenConnection(V.Ambient.Ccon,V.Ambient.Cuser,V.Ambient.Cpass)		
+	f.Intrinsic.String.Build("Delete From Gs_Registry Where User_ID = '{0}' and Company = '{1}' and Reg_ID = {2} and Seq = '1000';",v.Local.sUserID,v.Caller.CompanyCode,V.Global.lProgID,v.Local.sSQL)
+	F.ODBC.Connection!common.Execute(v.Local.sSQL)
+	F.ODBC.Connection!common.Close
+	
+	'GVMain
+	F.Intrinsic.Control.If(V.DataTable.MainTB.Exists,=,True)
+		Gui.Form.gsWO.Serialize("GVMain",V.Local.sSerialize)
+		F.Global.Registry.AddValue(V.Caller.User,V.Caller.CompanyCode,"GVMain",V.Global.lProgID,1000,False,"Serialize",False,0,-999.0,1/1/1980,12:00:00 AM,V.Local.sSerialize)
+	F.Intrinsic.Control.EndIf
+	
+F.Intrinsic.Control.Catch
+	F.Intrinsic.String.Build("Project: {0}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}GAB Version: {5}}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	f.Intrinsic.Control.CallSub("Unload")
+F.Intrinsic.Control.EndTry
+Program.Sub.Serialize.End
+
+
+Program.Sub.gsWO_CellValueChanged.Start
+f.Intrinsic.Control.Try
+	V.Local.sError.Declare	
+	v.Local.sColumn.Declare
+	v.Local.sSql.Declare
+	v.Local.sRet.Declare
+	v.Local.sNote.Declare	
+	
+	f.Intrinsic.String.UCase(v.Args.Column,v.Local.sColumn)
+	f.Intrinsic.Control.if(v.Local.sColumn,=,"NOTE")
+		f.Intrinsic.String.Left(v.DataTable.MainTB(v.Args.RowIndex).Note!FieldValString,30,v.Local.sNote)
+		F.Intrinsic.String.Build("Select * from GAB_6163_Note where Job = '{0}' and Suffix = '{1}' and Seq = '{2}'",v.DataTable.MainTB(v.Args.RowIndex).Job!FieldValString,v.DataTable.MainTB(v.Args.RowIndex).Suffix!FieldValString,v.DataTable.MainTB(v.Args.RowIndex).Seq!FieldValString,v.Local.sSql)
+		f.ODBC.Connection!conx.ExecuteAndReturn(v.Local.sSql,v.Local.sRet)
+		f.Intrinsic.Control.If(v.Local.sRet,=,"")
+			f.Intrinsic.String.Build("Insert into GAB_6163_Note (Job,suffix,seq,note) values ('{0}','{1}','{2}','{3}')",v.DataTable.MainTB(v.Args.RowIndex).Job!FieldValString,v.DataTable.MainTB(v.Args.RowIndex).Suffix!FieldValString,v.DataTable.MainTB(v.Args.RowIndex).Seq!FieldValString,v.Local.sNote.PSQLFriendly,v.Local.sSql)
+		f.Intrinsic.Control.Else
+			f.Intrinsic.String.Build("Update GAB_6163_Note set Note = '{3}' where Job  = '{0}' and Suffix = '{1}' and Seq = '{2}'",v.DataTable.MainTB(v.Args.RowIndex).Job!FieldValString,v.DataTable.MainTB(v.Args.RowIndex).Suffix!FieldValString,v.DataTable.MainTB(v.Args.RowIndex).Seq!FieldValString,v.Local.sNote.PSQLFriendly,v.Local.sSql)
+		f.Intrinsic.Control.EndIf
+		f.ODBC.Connection!conx.Execute(v.Local.sSql)
+	f.Intrinsic.Control.EndIf
+	
+	'IssueQty
+	f.Intrinsic.Control.If(v.Args.Column,=,"IssueQty")	
+		'TDjohan - BEGIN - 11/27/2023 
+		'Allow the IssueQty to be NEGATIVE
+'		F.Intrinsic.Control.BlockEvents
+'		F.Intrinsic.Control.If(V.DataTable.MainTB(v.Args.RowIndex).IssueQty!FieldValFloat,>,0)	
+'			F.Intrinsic.Control.If(V.DataTable.MainTB(v.Args.RowIndex).IssueQty!FieldValFloat,>,V.DataTable.MainTB(v.Args.RowIndex).ToBeIssued!FieldValFloat)
+'				F.Intrinsic.Control.If(V.DataTable.MainTB(v.Args.RowIndex).ToBeIssued!FieldValFloat,>=,0)
+'					F.Data.DataTable.SetValue("MainTB",V.Args.RowIndex,"IssueQty",V.DataTable.MainTB(v.Args.RowIndex).ToBeIssued!FieldValFloat)
+'				F.Intrinsic.Control.Else
+'					F.Data.DataTable.SetValue("MainTB",V.Args.RowIndex,"IssueQty",0.00)
+'				F.Intrinsic.Control.EndIf
+'			F.Intrinsic.Control.EndIf
+'			F.Intrinsic.Control.If(V.DataTable.MainTB(v.Args.RowIndex).IssueQty!FieldValFloat,>,0)
+'				F.Data.DataTable.SetValue("MainTB",V.Args.RowIndex,"FlagIssue",True)
+'			F.Intrinsic.Control.Else
+'				F.Data.DataTable.SetValue("MainTB",V.Args.RowIndex,"FlagIssue",False)
+'			F.Intrinsic.Control.EndIf
+'		F.Intrinsic.Control.Else
+'			F.Data.DataTable.SetValue("MainTB",V.Args.RowIndex,"IssueQty",0.00,"FlagIssue",False)
+'		F.Intrinsic.Control.EndIf
+'		F.Intrinsic.Control.UnBlockEvents
+		
+		F.Intrinsic.Control.BlockEvents
+		F.Intrinsic.Control.If(V.DataTable.MainTB(v.Args.RowIndex).IssueQty!FieldValFloat,>,0)	
+			F.Intrinsic.Control.If(V.DataTable.MainTB(v.Args.RowIndex).IssueQty!FieldValFloat,>,V.DataTable.MainTB(v.Args.RowIndex).ToBeIssued!FieldValFloat)
+				F.Intrinsic.Control.If(V.DataTable.MainTB(v.Args.RowIndex).ToBeIssued!FieldValFloat,>=,0)
+					F.Data.DataTable.SetValue("MainTB",V.Args.RowIndex,"IssueQty",V.DataTable.MainTB(v.Args.RowIndex).ToBeIssued!FieldValFloat)
+				F.Intrinsic.Control.Else
+					F.Data.DataTable.SetValue("MainTB",V.Args.RowIndex,"IssueQty",0.00)
+				F.Intrinsic.Control.EndIf
+			F.Intrinsic.Control.EndIf
+			F.Intrinsic.Control.If(V.DataTable.MainTB(v.Args.RowIndex).IssueQty!FieldValFloat,>,0)
+				F.Data.DataTable.SetValue("MainTB",V.Args.RowIndex,"FlagIssue",True)
+			F.Intrinsic.Control.Else
+				F.Data.DataTable.SetValue("MainTB",V.Args.RowIndex,"FlagIssue",False)
+			F.Intrinsic.Control.EndIf
+		F.Intrinsic.Control.Else
+			F.Intrinsic.Control.If(V.DataTable.MainTB(v.Args.RowIndex).IssueQty!FieldValFloat,=,0)
+				F.Data.DataTable.SetValue("MainTB",V.Args.RowIndex,"IssueQty",0.00,"FlagIssue",False)
+			F.Intrinsic.Control.Else
+				F.Intrinsic.Control.If(V.DataTable.MainTB(v.Args.RowIndex).ToBeIssued!FieldValFloat,>,v.Args.Value)
+					F.Data.DataTable.SetValue("MainTB",V.Args.RowIndex,"IssueQty",V.DataTable.MainTB(v.Args.RowIndex).ToBeIssued!FieldValFloat)
+				F.Intrinsic.Control.EndIf
+				F.Intrinsic.Control.If(V.DataTable.MainTB(v.Args.RowIndex).IssueQty!FieldValFloat,<>,0)
+					F.Data.DataTable.SetValue("MainTB",V.Args.RowIndex,"FlagIssue",True)
+				F.Intrinsic.Control.Else
+					F.Data.DataTable.SetValue("MainTB",V.Args.RowIndex,"FlagIssue",False)
+				F.Intrinsic.Control.EndIf
+			F.Intrinsic.Control.EndIf
+		F.Intrinsic.Control.EndIf
+		F.Intrinsic.Control.UnBlockEvents
+		'TDjohan - END - 11/27/2023 
+	f.Intrinsic.Control.EndIf
+	
+	'FlagIssue
+	f.Intrinsic.Control.If(v.Args.Column,=,"FlagIssue")	
+		'TDjohan - BEGIN - 11/27/2023 
+		'Allow the IssueQty to be NEGATIVE
+'		F.Intrinsic.Control.BlockEvents	
+'		F.Intrinsic.Control.If(v.Args.Value,=,True)
+'			F.Intrinsic.Control.If(V.DataTable.MainTB(v.Args.RowIndex).IssueQty!FieldValFloat,=,0)
+'				F.Intrinsic.Control.If(V.DataTable.MainTB(v.Args.RowIndex).ToBeIssued!FieldValFloat,>,0)
+'					F.Data.DataTable.SetValue("MainTB",V.Args.RowIndex,"IssueQty",V.DataTable.MainTB(v.Args.RowIndex).ToBeIssued!FieldValFloat,"FlagIssue",True)
+'				F.Intrinsic.Control.EndIf		
+'			F.Intrinsic.Control.EndIf
+'		F.Intrinsic.Control.Else
+'			F.Data.DataTable.SetValue("MainTB",V.Args.RowIndex,"IssueQty",0,"FlagIssue",False)
+'		F.Intrinsic.Control.EndIf
+'		
+''		F.Intrinsic.Control.If(V.DataTable.MainTB(v.Args.RowIndex).FlagIssue!FieldVal,=,False)
+''			F.Intrinsic.Control.If(V.DataTable.MainTB(v.Args.RowIndex).IssueQty!FieldValFloat,=,0)
+''				F.Intrinsic.Control.If(V.DataTable.MainTB(v.Args.RowIndex).ToBeIssued!FieldValFloat,>,0)
+''					F.Data.DataTable.SetValue("MainTB",V.Args.RowIndex,"IssueQty",V.DataTable.MainTB(v.Args.RowIndex).ToBeIssued!FieldValFloat,"FlagIssue",True)			
+''				F.Intrinsic.Control.EndIf		
+''			F.Intrinsic.Control.EndIf
+''		F.Intrinsic.Control.Else
+''			F.Data.DataTable.SetValue("MainTB",V.Args.RowIndex,"IssueQty",0,"FlagIssue",False)
+''		F.Intrinsic.Control.EndIf
+'		F.Intrinsic.Control.UnBlockEvents
+		
+		F.Intrinsic.Control.BlockEvents	
+		F.Intrinsic.Control.If(v.Args.Value,=,True)
+			F.Intrinsic.Control.If(V.DataTable.MainTB(v.Args.RowIndex).IssueQty!FieldValFloat,=,0)
+				F.Intrinsic.Control.If(V.DataTable.MainTB(v.Args.RowIndex).ToBeIssued!FieldValFloat,=,0)
+					F.Data.DataTable.SetValue("MainTB",V.Args.RowIndex,"IssueQty",0,"FlagIssue",False)
+				F.Intrinsic.Control.Else
+					F.Data.DataTable.SetValue("MainTB",V.Args.RowIndex,"IssueQty",V.DataTable.MainTB(v.Args.RowIndex).ToBeIssued!FieldValFloat,"FlagIssue",True)
+				F.Intrinsic.Control.EndIf		
+			F.Intrinsic.Control.EndIf
+		F.Intrinsic.Control.Else
+			F.Data.DataTable.SetValue("MainTB",V.Args.RowIndex,"IssueQty",0,"FlagIssue",False)
+		F.Intrinsic.Control.EndIf
+		
+'		F.Intrinsic.Control.If(V.DataTable.MainTB(v.Args.RowIndex).FlagIssue!FieldVal,=,False)
+'			F.Intrinsic.Control.If(V.DataTable.MainTB(v.Args.RowIndex).IssueQty!FieldValFloat,=,0)
+'				F.Intrinsic.Control.If(V.DataTable.MainTB(v.Args.RowIndex).ToBeIssued!FieldValFloat,>,0)
+'					F.Data.DataTable.SetValue("MainTB",V.Args.RowIndex,"IssueQty",V.DataTable.MainTB(v.Args.RowIndex).ToBeIssued!FieldValFloat,"FlagIssue",True)			
+'				F.Intrinsic.Control.EndIf		
+'			F.Intrinsic.Control.EndIf
+'		F.Intrinsic.Control.Else
+'			F.Data.DataTable.SetValue("MainTB",V.Args.RowIndex,"IssueQty",0,"FlagIssue",False)
+'		F.Intrinsic.Control.EndIf
+		F.Intrinsic.Control.UnBlockEvents
+		'TDjohan - END - 11/27/2023 
+	f.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.String.Build("Project: {0}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}GAB Version: {5}}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	f.Intrinsic.Control.CallSub("Unload")
+F.Intrinsic.Control.EndTry
+Program.Sub.gsWO_CellValueChanged.End
+
+Program.Sub.lblByCustomerPO_Click.Start
+f.Intrinsic.Control.Try
+	V.Local.sError.Declare
+	
+	Gui.Form.frmBySalesOrder.Visible(False)
+	Gui.Form.txtSalesOrder.Text("")
+	Gui.Form.frmByCustomerPO.Visible(True)
+	Gui.Form.txtCustomerPO.Text("")
+'	F.Intrinsic.Control.CallSub(GetCustomerPODictionary)
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.String.Build("Project: {0}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}GAB Version: {5}}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	f.Intrinsic.Control.CallSub("Unload")
+F.Intrinsic.Control.EndTry
+Program.Sub.lblByCustomerPO_Click.End
+
+Program.Sub.lblBySO_Click.Start
+f.Intrinsic.Control.Try
+	V.Local.sError.Declare
+	
+	
+	Gui.Form.frmByCustomerPO.Visible(False)
+	Gui.Form.txtCustomerPO.Text("")
+	Gui.Form.frmBySalesOrder.Visible(True)
+	Gui.Form.txtSalesOrder.Text("")
+'	F.Intrinsic.Control.CallSub(GetSalesOrderDictionary)
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.String.Build("Project: {0}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}GAB Version: {5}}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	f.Intrinsic.Control.CallSub("Unload")
+F.Intrinsic.Control.EndTry
+Program.Sub.lblBySO_Click.End
+
+Program.Sub.BrowseCustomerPO.Start
+f.Intrinsic.Control.Try
+	V.Local.sError.Declare	
+	V.Local.sTitles.Declare
+	V.Local.iWidths.Declare
+	V.Local.sSql.Declare
+	V.Local.sRet.Declare
+	V.Local.sCustomerPO.Declare
+	
+	'Browse for WO by Customer PO
+	F.Intrinsic.String.Split("Customer PO*!*Job*!*Suffix*!*Due Date","*!*",V.Local.sTitles)
+	F.Intrinsic.String.Split("1500*!*1000*!*700*!*1000","*!*",V.Local.iWidths)
+	
+	V.Local.sSql.Set("SELECT DISTINCT h.CUSTOMER_PO, h.JOB, h.SUFFIX, h.DATE_DUE FROM V_JOB_HEADER h WHERE h.DATE_CLOSED = '1900-01-01' ORDER BY h.CUSTOMER_PO, h.JOB, h.SUFFIX")
+	
+	F.Intrinsic.UI.SetBrowserHotTypeAhead(True)
+	F.Intrinsic.UI.Browser("Select Work Order by Customer PO","conx",V.Local.sSql,V.Local.sTitles,V.Local.iWidths,16000,10000,V.Local.sRet)
+		
+	F.Intrinsic.Control.If(V.Local.sRet,<>,"***CANCEL***")
+		
+		F.Intrinsic.String.Split(V.Local.sRet,"*!*",V.Local.sRet)
+		V.Local.sCustomerPO.Set(V.Local.sRet(0).Trim)
+		Gui.Form.txtCustomerPO.Text(V.Local.sCustomerPO)
+		
+		F.Intrinsic.Control.CallSub("BindBySelection","sCustomerPO",V.Local.sCustomerPO,"sSalesOrder","")
+
+	F.Intrinsic.Control.EndIf
+	
+F.Intrinsic.Control.Catch
+	F.Intrinsic.String.Build("Project: {0}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}GAB Version: {5}}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	f.Intrinsic.Control.CallSub("Unload")
+F.Intrinsic.Control.EndTry
+Program.Sub.BrowseCustomerPO.End
+
+Program.Sub.BrowseSalesOrder.Start
+f.Intrinsic.Control.Try
+	V.Local.sError.Declare	
+	V.Local.sTitles.Declare
+	V.Local.iWidths.Declare
+	V.Local.sSql.Declare
+	V.Local.sRet.Declare
+	V.Local.sSalesOrder.Declare
+	
+	'Browse for WO by Customer PO
+	F.Intrinsic.String.Split("SO*!*SO Line*!*Job*!*Suffix*!*Due Date","*!*",V.Local.sTitles)
+	F.Intrinsic.String.Split("1000*!*700*!*1000*!*700*!*1000","*!*",V.Local.iWidths)
+	
+	V.Local.sSql.Set("SELECT DISTINCT otw.ORDER_NO, otw.ORDER_LINE, h.JOB, h.SUFFIX, h.DATE_DUE FROM V_JOB_HEADER h LEFT JOIN V_ORDER_TO_WO otw ON h.Job = otw.Job and h.suffix = otw.Suffix WHERE h.DATE_CLOSED = '1900-01-01' ORDER BY otw.ORDER_NO, otw.ORDER_LINE, h.JOB, h.SUFFIX")
+	
+	F.Intrinsic.UI.SetBrowserHotTypeAhead(True)
+	F.Intrinsic.UI.Browser("Select Work Order by Sales Order","conx",V.Local.sSql,V.Local.sTitles,V.Local.iWidths,16000,10000,V.Local.sRet)
+		
+	F.Intrinsic.Control.If(V.Local.sRet,<>,"***CANCEL***")
+		
+		F.Intrinsic.String.Split(V.Local.sRet,"*!*",V.Local.sRet)
+		V.Local.sSalesOrder.Set(V.Local.sRet(0).Trim)
+		Gui.Form.txtSalesOrder.Text(V.Local.sSalesOrder)
+		
+		F.Intrinsic.Control.CallSub("BindBySelection","sCustomerPO","","sSalesOrder",V.Local.sSalesOrder)
+
+	F.Intrinsic.Control.EndIf
+	
+F.Intrinsic.Control.Catch
+	F.Intrinsic.String.Build("Project: {0}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}GAB Version: {5}}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	f.Intrinsic.Control.CallSub("Unload")
+F.Intrinsic.Control.EndTry
+Program.Sub.BrowseSalesOrder.End
+
+Program.Sub.GetSalesOrderDictionary.Start
+f.Intrinsic.Control.Try
+	V.Local.sError.Declare	
+	V.Local.sSql.Declare
+	v.Local.bExists.Declare
+	
+	f.Data.Dictionary.Exists("SalesOrder",v.Local.bExists)
+	Function.Intrinsic.Control.If(v.Local.bExists,=,True)
+		f.Data.Dictionary.Close("SalesOrder")
+		Gui.Form.txtSalesOrder.ClearAutoCompleteItems
+	Function.Intrinsic.Control.EndIf
+	
+	V.Local.sSql.Set("SELECT distinct RTRIM(ORDER_NO), RTRIM(ORDER_NO) AS SalesOrder FROM V_ORDER_TO_WO ORDER BY ORDER_NO")
+
+	'Creating dictionary 
+	F.Data.Dictionary.CreateFromSql("SalesOrder","conx",V.Local.sSql)
+	
+	'Binding to text box
+	Gui.Form.txtSalesOrder.AddAutoCompleteItem("SalesOrder",dictionary)
+		
+F.Intrinsic.Control.Catch
+	F.Intrinsic.String.Build("Project: {0}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}GAB Version: {5}}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	f.Intrinsic.Control.CallSub("Unload")
+F.Intrinsic.Control.EndTry
+Program.Sub.GetSalesOrderDictionary.End
+
+Program.Sub.GetCustomerPODictionary.Start
+f.Intrinsic.Control.Try
+	V.Local.sError.Declare	
+	V.Local.sSql.Declare
+	v.Local.bExists.Declare
+		
+	f.Data.Dictionary.Exists("CustomerPO",v.Local.bExists)
+	Function.Intrinsic.Control.If(v.Local.bExists,=,True)
+		f.Data.Dictionary.Close("CustomerPO")
+		Gui.Form.txtCustomerPO.ClearAutoCompleteItems
+	Function.Intrinsic.Control.EndIf
+	
+	V.Local.sSql.Set("SELECT distinct RTRIM(Customer_PO), RTRIM(Customer_PO) FROM V_JOB_HEADER ORDER BY Customer_PO")
+
+	'Creating dictionary 
+	F.Data.Dictionary.CreateFromSql("CustomerPO","conx",V.Local.sSql)
+	
+	'Binding to text box
+	Gui.Form.txtCustomerPO.AddAutoCompleteItem("CustomerPO",dictionary)
+		
+F.Intrinsic.Control.Catch
+	F.Intrinsic.String.Build("Project: {0}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}GAB Version: {5}}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	f.Intrinsic.Control.CallSub("Unload")
+F.Intrinsic.Control.EndTry
+Program.Sub.GetCustomerPODictionary.End
+
+Program.Sub.txtSalesOrder_LostFocus.Start
+f.Intrinsic.Control.Try
+	V.Local.sError.Declare	
+	V.Local.sSql.Declare
+	V.Local.sSqlRet.Declare
+	
+	F.Intrinsic.Control.BlockEvents
+	
+	'Validate the Sales Order
+	F.Intrinsic.Control.If(V.Screen.Form!txtSalesOrder.Text.Trim,<>,"")
+		F.Intrinsic.String.Build("select ORDER_NO from V_ORDER_TO_WO where ORDER_NO = '{0}'",V.Screen.Form!txtSalesOrder.Text.Trim,V.Local.sSql)
+		F.ODBC.Connection!conx.ExecuteAndReturn(V.Local.sSql,V.Local.sSqlRet)
+		F.Intrinsic.Control.If(V.Ambient.ExecuteAndReturnEOF.Not,=,True)
+			F.Intrinsic.Control.CallSub("BindBySelection","sCustomerPO","","sSalesOrder",V.Screen.Form!txtSalesOrder.Text.Trim)
+		F.Intrinsic.Control.Else
+			f.Intrinsic.Control.If(v.DataTable.MainTB.Exists)
+				gui.Form.gsWO.ClearRows("GVMain")
+				f.Data.DataTable.Close("MainTB")
+			f.Intrinsic.Control.EndIf
+			F.Intrinsic.UI.Msgbox("Sales Order is invalid")
+		F.Intrinsic.Control.EndIf
+'	F.Intrinsic.Control.Else
+'		F.Intrinsic.Control.CallSub("BindBySelection","sCustomerPO","","sSalesOrder",V.Screen.Form!txtSalesOrder.Text.Trim)
+	F.Intrinsic.Control.EndIf
+	
+	F.Intrinsic.Control.UnBlockEvents
+	
+F.Intrinsic.Control.Catch
+	F.Intrinsic.String.Build("Project: {0}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}GAB Version: {5}}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	f.Intrinsic.Control.CallSub("Unload")
+F.Intrinsic.Control.EndTry
+Program.Sub.txtSalesOrder_LostFocus.End
+
+Program.Sub.txtCustomerPO_LostFocus.Start
+f.Intrinsic.Control.Try
+	V.Local.sError.Declare	
+	V.Local.sSql.Declare
+	V.Local.sSqlRet.Declare
+	
+	F.Intrinsic.Control.BlockEvents
+	
+	'Validate the Customer PO
+	F.Intrinsic.Control.If(V.Screen.Form!txtCustomerPO.Text.Trim,<>,"")
+		F.Intrinsic.String.Build("select Customer_PO from V_JOB_HEADER where Customer_PO = '{0}'",V.Screen.Form!txtCustomerPO.Text.Trim,V.Local.sSql)
+		F.ODBC.Connection!conx.ExecuteAndReturn(V.Local.sSql,V.Local.sSqlRet)
+		F.Intrinsic.Control.If(V.Ambient.ExecuteAndReturnEOF.Not,=,True)
+			F.Intrinsic.Control.CallSub("BindBySelection","sCustomerPO",V.Screen.Form!txtCustomerPO.Text.Trim,"sSalesOrder","")
+		F.Intrinsic.Control.Else
+			f.Intrinsic.Control.If(v.DataTable.MainTB.Exists)
+				gui.Form.gsWO.ClearRows("GVMain")
+				f.Data.DataTable.Close("MainTB")
+			f.Intrinsic.Control.EndIf
+			F.Intrinsic.UI.Msgbox("Customer PO is invalid")
+		F.Intrinsic.Control.EndIf
+	F.Intrinsic.Control.EndIf
+	
+	F.Intrinsic.Control.UnBlockEvents
+	
+F.Intrinsic.Control.Catch
+	F.Intrinsic.String.Build("Project: {0}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}GAB Version: {5}}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	f.Intrinsic.Control.CallSub("Unload")
+F.Intrinsic.Control.EndTry
+Program.Sub.txtCustomerPO_LostFocus.End
+
+Program.Sub.cmdRefreshCustomerPO_Click.Start
+F.Intrinsic.Control.Try
+	V.Local.sError.Declare
+	V.Local.sSql.Declare
+	V.Local.sSqlRet.Declare 
+	
+	F.Intrinsic.Control.BlockEvents
+	
+	F.Intrinsic.String.Build("select Customer_PO from V_JOB_HEADER where Customer_PO = '{0}'",V.Screen.Form!txtCustomerPO.Text.Trim,V.Local.sSql)
+	F.ODBC.Connection!conx.ExecuteAndReturn(V.Local.sSql,V.Local.sSqlRet)
+	F.Intrinsic.Control.If(V.Ambient.ExecuteAndReturnEOF.Not,=,True)
+		F.Intrinsic.Control.CallSub("BindBySelection","sCustomerPO",V.Screen.Form!txtCustomerPO.Text.Trim,"sSalesOrder","")
+	F.Intrinsic.Control.Else
+		F.Intrinsic.UI.Msgbox("Customer PO is invalid")
+	F.Intrinsic.Control.EndIf
+	
+	F.Intrinsic.Control.UnBlockEvents
+	
+F.Intrinsic.Control.Catch
+	F.Intrinsic.String.Build("Project: {0}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}GAB Version: {5}}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	f.Intrinsic.Control.CallSub("Unload")
+F.Intrinsic.Control.EndTry
+Program.Sub.cmdRefreshCustomerPO_Click.End
+
+Program.Sub.cmdRefreshSalesOrder_Click.Start
+F.Intrinsic.Control.Try
+	V.Local.sError.Declare
+	V.Local.sSql.Declare
+	V.Local.sSqlRet.Declare 
+	
+	F.Intrinsic.Control.BlockEvents
+	
+	F.Intrinsic.Control.If(V.Screen.Form!txtSalesOrder.Text.Trim,<>,"")
+		F.Intrinsic.String.Build("select ORDER_NO from V_ORDER_TO_WO where ORDER_NO = '{0}'",V.Screen.Form!txtSalesOrder.Text.Trim,V.Local.sSql)
+		F.ODBC.Connection!conx.ExecuteAndReturn(V.Local.sSql,V.Local.sSqlRet)
+		F.Intrinsic.Control.If(V.Ambient.ExecuteAndReturnEOF.Not,=,True)
+			F.Intrinsic.Control.CallSub("BindBySelection","sCustomerPO","","sSalesOrder",V.Screen.Form!txtSalesOrder.Text.Trim)
+		F.Intrinsic.Control.Else
+			F.Intrinsic.UI.Msgbox("Sales Order is invalid")
+		F.Intrinsic.Control.EndIf
+'	F.Intrinsic.Control.Else
+'		F.Intrinsic.Control.CallSub("BindBySelection","sCustomerPO","","sSalesOrder",V.Screen.Form!txtSalesOrder.Text.Trim)
+	F.Intrinsic.Control.EndIf
+	
+	F.Intrinsic.Control.UnBlockEvents
+	
+F.Intrinsic.Control.Catch
+	F.Intrinsic.String.Build("Project: {0}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}GAB Version: {5}}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	f.Intrinsic.Control.CallSub("Unload")
+F.Intrinsic.Control.EndTry
+Program.Sub.cmdRefreshSalesOrder_Click.End
+
+Program.Sub.CheckLockFile.Start
+F.Intrinsic.Control.Try
+	V.Local.sError.Declare
+	V.Local.sJob.Declare
+	V.Local.sSQL.Declare
+	V.Local.sSuffix.Declare
+	V.Local.sErrorLog.Declare
+
+	V.Local.sJob.Set(V.DataTable.dtIssueSelected(V.Global.iReq).Job!FieldValTrim)
+	V.Local.sSuffix.Set(V.DataTable.dtIssueSelected(V.Global.iReq).Suffix!FieldValTrim)
+
+	F.Intrinsic.String.Build("select user_id from x_lock_file where company = '{0}' and lock_type = 'WO' and rec_key = '{1}-{2}'",V.Caller.CompanyCode,V.Local.sJob,V.Local.sSuffix,V.Local.sSQL)
+	F.ODBC.Connection!conx.OpenLocalRecordsetRO("rst",V.Local.sSQL)
+	F.Intrinsic.Control.If(V.ODBC.conx!rst.EOF,=,False)
+		V.Global.bLock.Set(True)
+	F.Intrinsic.Control.Else
+		V.Global.bLock.Set(False)
+	F.Intrinsic.Control.EndIf
+	F.ODBC.conx!rst.Close
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.String.Build("Project: {0}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}GAB Version: {5}}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	f.Intrinsic.Control.CallSub("Unload")
+F.Intrinsic.Control.EndTry	
+Program.Sub.CheckLockFile.End
+
+Program.Sub.cmdIssueSelected_Click.Start
+F.Intrinsic.Control.Try
+	V.Local.sError.Declare
+	V.Local.sQuery.Declare
+	V.Local.sMessage.Declare
+	V.Local.bDictExists.Declare
+	V.Local.iCnt.Declare
+	V.Local.fTotalOnhandQty.Declare 
+	V.Local.fTotalIssueQty.Declare
+	V.Local.sFilter.Declare
+	V.Local.sPartToIssueWithLoc.Declare
+	V.Local.sTempOnhandQty.Declare
+	V.Local.sErrorMessage.Declare
+	V.Local.bErrorLogFileExists.Declare
+	V.Local.iReturn.Declare
+	V.Local.iHandle.Declare(Long)
+	V.Local.iSuccessCnt.Declare
+	v.Local.bErrorExists.Declare
+	v.Local.sErrorLog.Declare
+	
+	Gui.Form.cmdIssueSelected.Enabled(False)
+	
+	F.Intrinsic.Control.If(V.DataTable.MainTB.Exists,=,False)
+		Gui.Form.cmdIssueSelected.Enabled(True)
+		F.Intrinsic.Control.ExitSub
+	F.Intrinsic.Control.EndIf
+	
+	'Refresh the Selected Data
+	F.Intrinsic.Control.If(V.DataView.MainTB!dvIssueSelected.Exists,=,True)
+		F.Data.DataView.Close("MainTB","dvIssueSelected")
+	F.Intrinsic.Control.EndIf
+
+	'TDjohan - BEGIN - 11/27/2023
+	'Allow to issue NEGATIVE quantity
+''	F.Data.DataView.Create("MainTB","dvIssueSelected",22,"FlagIssue = True","PartToIssueWithLoc ASC")
+'	F.Data.DataView.Create("MainTB","dvIssueSelected",22,"FlagIssue = True and IssueQty > 0","PartToIssueWithLoc ASC")
+	F.Data.DataView.Create("MainTB","dvIssueSelected",22,"FlagIssue = True and IssueQty <> 0","PartToIssueWithLoc ASC")
+	'TDjohan - END - 11/27/2023
+	
+	F.Intrinsic.Control.If(V.DataView.MainTB!dvIssueSelected.RowCount,>,0)
+		'Create Dictionary
+		F.Data.Dictionary.Exists("dictIssued",V.Local.bDictExists)
+		F.Intrinsic.Control.If(V.Local.bDictExists)
+			F.Data.Dictionary.Close("dictIssued")
+		F.Intrinsic.Control.EndIf
+		F.Data.Dictionary.Exists("dictToBeIssued",V.Local.bDictExists)
+		F.Intrinsic.Control.If(V.Local.bDictExists)
+			F.Data.Dictionary.Close("dictToBeIssued")
+		F.Intrinsic.Control.EndIf
+		F.Data.Dictionary.Exists("dictIssueStatus",V.Local.bDictExists)
+		F.Intrinsic.Control.If(V.Local.bDictExists)
+			F.Data.Dictionary.Close("dictIssueStatus")
+		F.Intrinsic.Control.EndIf
+		F.Intrinsic.Control.If(V.DataTable.dtQtyIssued.Exists,=,True)
+			F.Data.DataTable.Closed("dtQtyIssued")
+		F.Intrinsic.Control.EndIf
+		'Add Expression Column
+		F.Data.DataTable.AddExpressionColumn("MainTB","JSSPartToIssueWithLoc","String","TRIM(JobSuffixSeq + PartToIssueWithLoc)")
+		'Create DataTable
+		V.Local.sQuery.Set("select Job + '-' + Suffix + '-' + Seq as JobSuffixSeq, concat(Part,if(Locn = '00', '  ', Locn)) as PartToIssueWithLoc, Hours_Actual as Issued, (Hours_Estimated - Hours_Actual) as ToBeIssued, Case when Hours_Estimated - Hours_Actual = 0 then 'Issued' when Hours_Estimated - Hours_Actual < 0 then 'Over Issued' end as IssueStatus from V_JOB_OPERATIONS")
+		F.Data.DataTable.CreateFromSQL("dtQtyIssued",conx,V.Local.sQuery)
+		F.Data.DataTable.AddExpressionColumn("dtQtyIssued","JSSPartToIssueWithLoc","String","TRIM(JobSuffixSeq + PartToIssueWithLoc)")
+		'Dictionary for Issued Qty
+		F.Data.Dictionary.CreateFromDataTable("dictIssued","dtQtyIssued","JSSPartToIssueWithLoc","Issued")
+		F.Data.Dictionary.SetDefaultReturn("dictIssued",0.00)
+		F.Data.DataTable.FillFromDictionary("MainTB","dictIssued","JSSPartToIssueWithLoc","Issued")
+		'Dictionary for ToBeIssued Qty
+		F.Data.Dictionary.CreateFromDataTable("dictToBeIssued","dtQtyIssued","JSSPartToIssueWithLoc","ToBeIssued")
+		F.Data.Dictionary.SetDefaultReturn("dictToBeIssued",0.00)
+		F.Data.DataTable.FillFromDictionary("MainTB","dictToBeIssued","JSSPartToIssueWithLoc","ToBeIssued")
+		F.Data.DataTable.FillFromDictionary("MainTB","dictToBeIssued","JSSPartToIssueWithLoc","OpenQty")
+		'Dictionary for IssueStatus
+		F.Data.Dictionary.CreateFromDataTable("dictIssueStatus","dtQtyIssued","JSSPartToIssueWithLoc","IssueStatus")
+		F.Data.Dictionary.SetDefaultReturn("dictIssueStatus","")
+		F.Data.DataTable.FillFromDictionary("MainTB","dictIssueStatus","JSSPartToIssueWithLoc","IssueStatus")
+		'Delete Expression Column
+		F.Data.DataTable.RemoveColumn("MainTB","JSSPartToIssueWithLoc")
+		F.Data.DataTable.RemoveColumn("dtQtyIssued","JSSPartToIssueWithLoc")
+		
+		'Create the Error Log file
+		F.Intrinsic.String.Concat(V.System.Temp,"\GSS\GAB_6163_",V.Caller.User.Trim,"_",V.Caller.Terminal.Trim,"_",v.Ambient.Now.FormatYYYYMMDDHhNnSs,"_Log.txt",V.Global.sFileName)
+		Function.Intrinsic.File.Exists(V.Global.sFileName,V.Local.bErrorLogFileExists)
+		F.Intrinsic.Control.If(V.Local.bErrorLogFileExists)
+			'Delete the file
+			F.Intrinsic.File.DeleteFile(V.Global.sFileName)
+		F.Intrinsic.Control.EndIf
+		
+		'Validate the Data
+		'If Issue Qty is greater than To Be Issued Qty then error
+		v.Local.bErrorExists.Set(False)
+		F.Intrinsic.Control.For(v.Local.iCnt,0,v.DataView.MainTB!dvIssueSelected.RowCount--,1)
+			'TDjohan - BEGIN - 11/27/2023
+			'Allow to issue NEGATIVE quantity
+'			F.Intrinsic.Control.If(v.DataView.MainTB!dvIssueSelected(v.Local.iCnt).IssueQty!FieldVal,>,v.DataView.MainTB!dvIssueSelected(v.Local.iCnt).ToBeIssued!FieldVal)
+'				v.Local.bErrorExists.Set(True)
+'				
+'				'Write to ErrorLog
+'				V.Local.sErrorLog.Set("")
+'				F.Intrinsic.String.Build("{0}Job: {3} {2}Suffix: {4} {2}Seq: {5}",V.Local.sErrorLog,V.Ambient.NewLine,V.Ambient.Tab,v.DataView.MainTB!dvIssueSelected(v.Local.iCnt).Job!FieldValTrim,v.DataView.MainTB!dvIssueSelected(v.Local.iCnt).Suffix!FieldValTrim,v.DataView.MainTB!dvIssueSelected(v.Local.iCnt).Seq!FieldValTrim,V.Local.sErrorLog)
+'				F.Intrinsic.String.Build("{0}{1}Part: {3} {2}Loc: {4}",V.Local.sErrorLog,V.Ambient.NewLine,V.Ambient.Tab,v.DataView.MainTB!dvIssueSelected(v.Local.iCnt).PartToIssue!FieldValTrim,v.DataView.MainTB!dvIssueSelected(v.Local.iCnt).PartToIssueLoc!FieldValTrim,V.Local.sErrorLog)
+'				F.Intrinsic.String.Build("{0}{1}{2}",V.Local.sErrorLog,V.Ambient.NewLine,"Issue Qty Greater Than To Be Issued Qty",V.Local.sErrorLog)	
+'				F.Intrinsic.String.Build("{0}{1}{2}{1}",V.Local.sErrorLog,V.Ambient.NewLine,"==================================================",V.Local.sErrorLog)
+'				
+'				Function.Intrinsic.File.Exists(V.Global.sFileName,V.Local.bErrorLogFileExists)
+'				F.Intrinsic.Control.If(V.Local.bErrorLogFileExists)
+'					Function.Intrinsic.File.AppendToFile(V.Global.sFileName,V.Local.sErrorLog)
+'				F.Intrinsic.Control.Else
+'					F.Intrinsic.File.String2File(V.Global.sFileName,V.Local.sErrorLog)
+'				F.Intrinsic.Control.EndIf
+'			F.Intrinsic.Control.EndIf
+			
+			'If IssueQty is POSITIVE
+			F.Intrinsic.Control.If(v.DataView.MainTB!dvIssueSelected(v.Local.iCnt).IssueQty!FieldVal,>=,0)
+				F.Intrinsic.Control.If(v.DataView.MainTB!dvIssueSelected(v.Local.iCnt).IssueQty!FieldVal,>,v.DataView.MainTB!dvIssueSelected(v.Local.iCnt).ToBeIssued!FieldVal)
+					v.Local.bErrorExists.Set(True)
+					
+					'Write to ErrorLog
+					V.Local.sErrorLog.Set("")
+					F.Intrinsic.String.Build("{0}Job: {3} {2}Suffix: {4} {2}Seq: {5}",V.Local.sErrorLog,V.Ambient.NewLine,V.Ambient.Tab,v.DataView.MainTB!dvIssueSelected(v.Local.iCnt).Job!FieldValTrim,v.DataView.MainTB!dvIssueSelected(v.Local.iCnt).Suffix!FieldValTrim,v.DataView.MainTB!dvIssueSelected(v.Local.iCnt).Seq!FieldValTrim,V.Local.sErrorLog)
+					F.Intrinsic.String.Build("{0}{1}Part: {3} {2}Loc: {4}",V.Local.sErrorLog,V.Ambient.NewLine,V.Ambient.Tab,v.DataView.MainTB!dvIssueSelected(v.Local.iCnt).PartToIssue!FieldValTrim,v.DataView.MainTB!dvIssueSelected(v.Local.iCnt).PartToIssueLoc!FieldValTrim,V.Local.sErrorLog)
+					F.Intrinsic.String.Build("{0}{1}{2}",V.Local.sErrorLog,V.Ambient.NewLine,"Issue Qty Greater Than To Be Issued Qty",V.Local.sErrorLog)	
+					F.Intrinsic.String.Build("{0}{1}{2}{1}",V.Local.sErrorLog,V.Ambient.NewLine,"==================================================",V.Local.sErrorLog)
+					
+					Function.Intrinsic.File.Exists(V.Global.sFileName,V.Local.bErrorLogFileExists)
+					F.Intrinsic.Control.If(V.Local.bErrorLogFileExists)
+						Function.Intrinsic.File.AppendToFile(V.Global.sFileName,V.Local.sErrorLog)
+					F.Intrinsic.Control.Else
+						F.Intrinsic.File.String2File(V.Global.sFileName,V.Local.sErrorLog)
+					F.Intrinsic.Control.EndIf
+				F.Intrinsic.Control.EndIf
+			'If IssueQty is NEGATIVE
+			F.Intrinsic.Control.Else
+				F.Intrinsic.Control.If(v.DataView.MainTB!dvIssueSelected(v.Local.iCnt).IssueQty!FieldVal,<,v.DataView.MainTB!dvIssueSelected(v.Local.iCnt).ToBeIssued!FieldVal)
+					v.Local.bErrorExists.Set(True)
+					
+					'Write to ErrorLog
+					V.Local.sErrorLog.Set("")
+					F.Intrinsic.String.Build("{0}Job: {3} {2}Suffix: {4} {2}Seq: {5}",V.Local.sErrorLog,V.Ambient.NewLine,V.Ambient.Tab,v.DataView.MainTB!dvIssueSelected(v.Local.iCnt).Job!FieldValTrim,v.DataView.MainTB!dvIssueSelected(v.Local.iCnt).Suffix!FieldValTrim,v.DataView.MainTB!dvIssueSelected(v.Local.iCnt).Seq!FieldValTrim,V.Local.sErrorLog)
+					F.Intrinsic.String.Build("{0}{1}Part: {3} {2}Loc: {4}",V.Local.sErrorLog,V.Ambient.NewLine,V.Ambient.Tab,v.DataView.MainTB!dvIssueSelected(v.Local.iCnt).PartToIssue!FieldValTrim,v.DataView.MainTB!dvIssueSelected(v.Local.iCnt).PartToIssueLoc!FieldValTrim,V.Local.sErrorLog)
+					F.Intrinsic.String.Build("{0}{1}{2}",V.Local.sErrorLog,V.Ambient.NewLine,"Issue Qty Greater Than To Be Issued Qty",V.Local.sErrorLog)	
+					F.Intrinsic.String.Build("{0}{1}{2}{1}",V.Local.sErrorLog,V.Ambient.NewLine,"==================================================",V.Local.sErrorLog)
+					
+					Function.Intrinsic.File.Exists(V.Global.sFileName,V.Local.bErrorLogFileExists)
+					F.Intrinsic.Control.If(V.Local.bErrorLogFileExists)
+						Function.Intrinsic.File.AppendToFile(V.Global.sFileName,V.Local.sErrorLog)
+					F.Intrinsic.Control.Else
+						F.Intrinsic.File.String2File(V.Global.sFileName,V.Local.sErrorLog)
+					F.Intrinsic.Control.EndIf
+				F.Intrinsic.Control.EndIf
+			F.Intrinsic.Control.EndIf
+			'TDjohan - END - 11/27/2023
+		F.Intrinsic.Control.Next(v.Local.iCnt)
+		
+		F.Intrinsic.Control.If(v.Local.bErrorExists)
+			F.Intrinsic.UI.Msgbox("Some data have changed. Issue Qty is greater than To Be Issued Qty. Please correct the Issue Qty.")
+			Gui.Form.cmdIssueSelected.Enabled(True)
+			
+			F.Intrinsic.File.Exists(V.Global.sFileName,V.Local.bErrorLogFileExists)
+			F.Intrinsic.Control.If(V.Local.bErrorLogFileExists)
+				'Display the error log file in Notepad
+				F.Intrinsic.File.GetHandle(V.Local.iHandle)
+				F.Intrinsic.Task.ShellExec(V.Local.iHandle,"open",V.Global.sFileName,"","",1)
+			F.Intrinsic.Control.EndIf
+		
+			F.Intrinsic.Control.ExitSub
+		F.Intrinsic.Control.EndIf
+	F.Intrinsic.Control.EndIf
+	
+	'Validate selected data 
+	F.Intrinsic.Control.If(V.DataView.MainTB!dvIssueSelected.Exists,=,True)
+		F.Data.DataView.Close("MainTB","dvIssueSelected")
+	F.Intrinsic.Control.EndIf
+	F.Intrinsic.Control.If(V.DataTable.dtIssueSelected.Exists,=,True)
+		F.Data.DataTable.Close("dtIssueSelected")
+	F.Intrinsic.Control.EndIf
+	F.Data.DataView.Create("MainTB","dvIssueSelected",22,"FlagIssue = True","PartToIssueWithLoc ASC")
+	F.Data.DataView.ToDataTable("MainTB","dvIssueSelected","dtIssueSelected",True)
+	F.Data.DataView.Close("MainTB","dvIssueSelected")	
+	
+	F.Intrinsic.Control.If(V.DataTable.dtIssueSelected.RowCount,>,0)
+		'Create Dictionary
+		F.Data.Dictionary.Exists("dictTotalOnhand",V.Local.bDictExists)
+		F.Intrinsic.Control.If(V.Local.bDictExists)
+			F.Data.Dictionary.Close("dictTotalOnhand")
+		F.Intrinsic.Control.EndIf
+		V.Local.sQuery.Set("Select CONCAT(part,location) as PartToIssueWithLoc, qty_onhand as OnHand from v_inventory_mstr order by Part, Location")
+		F.Data.Dictionary.CreateFromSQL("dictTotalOnhand",conx,V.Local.sQuery)
+		F.Data.Dictionary.SetDefaultReturn("dictTotalOnhand",0.00)
+		
+		F.Data.DataTable.FillFromDictionary("dtIssueSelected","dictTotalOnhand","PartToIssueWithLoc","OnHand")
+		F.Data.Dictionary.Close("dictTotalOnhand")
+			
+		'Calculating MRP Onhand Qty
+		V.Local.sPartToIssueWithLoc.Set(V.DataTable.dtIssueSelected(0).PartToIssueWithLoc!FieldVal)
+		V.Local.sTempOnhandQty.Set(V.DataTable.dtIssueSelected(0).OnHand!FieldValFloat)
+		F.Intrinsic.Control.For(V.Local.iCnt, 0, V.DataTable.dtIssueSelected.RowCount--, 1)
+			F.Intrinsic.Control.If(V.DataTable.dtIssueSelected(V.Local.iCnt).PartToIssueWithLoc!FieldVal,<>,V.Local.sPartToIssueWithLoc)
+				V.Local.sPartToIssueWithLoc.Set(V.DataTable.dtIssueSelected(V.Local.iCnt).PartToIssueWithLoc!FieldVal)
+				V.Local.sTempOnhandQty.Set(V.DataTable.dtIssueSelected(V.Local.iCnt).OnHand!FieldValFloat)
+			F.Intrinsic.Control.EndIf
+			F.Data.DataTable.SetValue("dtIssueSelected",V.Local.iCnt,"OnHand",V.Local.sTempOnhandQty)
+			F.Intrinsic.Math.Sub(V.DataTable.dtIssueSelected(V.Local.iCnt).OnHand!FieldValFloat,V.DataTable.dtIssueSelected(V.Local.iCnt).IssueQty!FieldValFloat,V.Local.sTempOnhandQty)
+		F.Intrinsic.Control.Next(V.Local.iCnt)	
+		
+		F.Intrinsic.UI.InvokeWaitDialog("Issuing selected material.......","Issue Material [ARC 6163]")
+		
+		'Create the Error Log file
+		F.Intrinsic.String.Concat(V.System.Temp,"\GSS\GAB_6163_",V.Caller.User.Trim,"_",V.Caller.Terminal.Trim,"_",v.Ambient.Now.FormatYYYYMMDDHhNnSs,"_Log.txt",V.Global.sFileName)
+		Function.Intrinsic.File.Exists(V.Global.sFileName,V.Local.bErrorLogFileExists)
+		F.Intrinsic.Control.If(V.Local.bErrorLogFileExists)
+			'Delete the file
+			F.Intrinsic.File.DeleteFile(V.Global.sFileName)
+		F.Intrinsic.Control.EndIf
+	
+		'Initialize Error Count
+		V.Global.iErrorCnt.Set(0)
+		
+		F.Intrinsic.Control.For(V.Local.iCnt, 0, V.DataTable.dtIssueSelected.RowCount--, 1)
+			V.Global.iReq.Set(V.Local.iCnt)
+			F.Intrinsic.Control.If(V.DataTable.dtIssueSelected(V.Local.iCnt).IssueQty!FieldValFloat,>,0.00)
+				F.Intrinsic.Control.If(V.DataTable.dtIssueSelected(V.Local.iCnt).OnHand!FieldValFloat,>=,V.DataTable.dtIssueSelected(V.Local.iCnt).IssueQty!FieldValFloat)
+					'Check for lot/bin
+					F.Intrinsic.String.Build("SELECT FLAG_LOT FROM V_INVENTORY_MSTR WHERE PART = '{0}' and location = '{1}'",V.DataTable.dtIssueSelected(V.Local.iCnt).PartToIssue!FieldValTrim,V.DataTable.dtIssueSelected(V.Local.iCnt).PartToIssueLoc!FieldValTrim,V.Local.sQuery)
+					F.ODBC.Connection!conx.OpenLocalRecordsetRO("rst",V.Local.sQuery)
+					F.Intrinsic.Control.If(V.ODBC.conx!rst.FieldValTrim!FLAG_LOT,=,"Y")
+						F.Intrinsic.Control.If(V.DataTable.dtLot.Exists,=,True)
+							F.Data.DataTable.Close("dtLot")
+						F.Intrinsic.Control.EndIf
+						F.Intrinsic.String.Build("SELECT LOT as Lot,BIN as Bin,HEAT as Heat,SERIAL_NUMBER as Serial, date_expiration as ExpDate, QUANTITY as Quantity FROM V_ITEM_MASTER WHERE PART = '{0}' and location = '{1}' AND QUANTITY > 0 ORDER BY QUANTITY DESC",V.DataTable.dtIssueSelected(V.Local.iCnt).PartToIssue!FieldValTrim,V.DataTable.dtIssueSelected(V.Local.iCnt).PartToIssueLoc!FieldValTrim,V.Local.sQuery)
+						F.Data.DataTable.CreateFromSQL("dtLot","conx",V.Local.sQuery,True)
+						F.Intrinsic.Control.If(v.DataTable.dtLot.RowCount,>,0)
+							F.Intrinsic.Control.If(V.DataTable.dtLot(0).Quantity!FieldValFloat,>=,V.DataTable.dtIssueSelected(V.Local.iCnt).IssueQty!FieldValFloat)
+								F.Intrinsic.Control.CallSub(IssueMaterialAllSelectedLotBin,"fIssue",V.DataTable.dtIssueSelected(V.Local.iCnt).IssueQty!FieldValFloat,"sBin",V.DataTable.dtLot(0).Bin!FieldValTrim,"sHeat",V.DataTable.dtLot(0).Heat!FieldValTrim,"sLot",V.DataTable.dtLot(0).Lot!FieldValTrim,"sSerial",V.DataTable.dtLot(0).Serial!FieldValTrim)
+							F.Intrinsic.Control.Else
+								F.Intrinsic.String.Build("Issue failed because Quantity in Bin: {0} is not enough; Quantity in Bin = {1}, Issue Qty = {2}",V.DataTable.dtLot(0).Bin!FieldValTrim,V.DataTable.dtLot(0).Quantity!FieldValFloat,V.DataTable.dtIssueSelected(V.Local.iCnt).IssueQty!FieldValFloat,V.Local.sErrorMessage)
+								F.Intrinsic.Control.CallSub("WriteErrorLog","sErrorMessage",V.Local.sErrorMessage)
+							F.Intrinsic.Control.EndIf
+						F.Intrinsic.Control.Else
+							V.Local.sErrorMessage.Set("Issue failed because no Lot/Bin/Heat/Serial exists for the Part. Please create it first.")
+							F.Intrinsic.Control.CallSub("WriteErrorLog","sErrorMessage",V.Local.sErrorMessage)
+						F.Intrinsic.Control.EndIf
+					F.Intrinsic.Control.Else
+						F.Intrinsic.Control.CallSub(IssueMaterialAllSelected,"fIssue",V.DataTable.dtIssueSelected(V.Local.iCnt).IssueQty!FieldValFloat,"sBin","","sHeat","","sLot","","sSerial","")
+					F.Intrinsic.Control.EndIf
+					F.ODBC.conx!rst.Close
+				F.Intrinsic.Control.Else	'OnHand is not enough
+					F.Intrinsic.String.Build("Issue failed because Onhand Qty is not enough; OnHand Qty = {0}, Issue Qty = {1}",V.DataTable.dtIssueSelected(V.Local.iCnt).OnHand!FieldValFloat,V.DataTable.dtIssueSelected(V.Local.iCnt).IssueQty!FieldValFloat,V.Local.sErrorMessage)
+					F.Intrinsic.Control.CallSub("WriteErrorLog","sErrorMessage",V.Local.sErrorMessage)
+				F.Intrinsic.Control.EndIf
+			'TDjohan - BEGIN - 11/27/2023
+			'Allow to issue NEGATIVE Quantity
+			F.Intrinsic.Control.ElseIf(V.DataTable.dtIssueSelected(V.Local.iCnt).IssueQty!FieldValFloat,<,0.00)
+				'Check for lot/bin
+				F.Intrinsic.String.Build("SELECT FLAG_LOT FROM V_INVENTORY_MSTR WHERE PART = '{0}' and location = '{1}'",V.DataTable.dtIssueSelected(V.Local.iCnt).PartToIssue!FieldValTrim,V.DataTable.dtIssueSelected(V.Local.iCnt).PartToIssueLoc!FieldValTrim,V.Local.sQuery)
+				F.ODBC.Connection!conx.OpenLocalRecordsetRO("rst",V.Local.sQuery)
+				F.Intrinsic.Control.If(V.ODBC.conx!rst.FieldValTrim!FLAG_LOT,=,"Y")
+					F.Intrinsic.Control.If(V.DataTable.dtLot.Exists,=,True)
+						F.Data.DataTable.Close("dtLot")
+					F.Intrinsic.Control.EndIf
+					F.Intrinsic.String.Build("SELECT LOT as Lot,BIN as Bin,HEAT as Heat,SERIAL_NUMBER as Serial, date_expiration as ExpDate, QUANTITY as Quantity FROM V_ITEM_MASTER WHERE PART = '{0}' and location = '{1}' ORDER BY QUANTITY DESC",V.DataTable.dtIssueSelected(V.Local.iCnt).PartToIssue!FieldValTrim,V.DataTable.dtIssueSelected(V.Local.iCnt).PartToIssueLoc!FieldValTrim,V.Local.sQuery)
+					F.Data.DataTable.CreateFromSQL("dtLot","conx",V.Local.sQuery,True)
+					F.Intrinsic.Control.If(v.DataTable.dtLot.RowCount,>,0)
+						F.Intrinsic.Control.CallSub(IssueMaterialAllSelectedLotBin,"fIssue",V.DataTable.dtIssueSelected(V.Local.iCnt).IssueQty!FieldValFloat,"sBin",V.DataTable.dtLot(0).Bin!FieldValTrim,"sHeat",V.DataTable.dtLot(0).Heat!FieldValTrim,"sLot",V.DataTable.dtLot(0).Lot!FieldValTrim,"sSerial",V.DataTable.dtLot(0).Serial!FieldValTrim)
+					F.Intrinsic.Control.Else
+						V.Local.sErrorMessage.Set("Issue failed because no Lot/Bin/Heat/Serial exists for the Part. Please create it first.")
+						F.Intrinsic.Control.CallSub("WriteErrorLog","sErrorMessage",V.Local.sErrorMessage)
+					F.Intrinsic.Control.EndIf
+				F.Intrinsic.Control.Else
+					F.Intrinsic.Control.CallSub(IssueMaterialAllSelected,"fIssue",V.DataTable.dtIssueSelected(V.Local.iCnt).IssueQty!FieldValFloat,"sBin","","sHeat","","sLot","","sSerial","")
+				F.Intrinsic.Control.EndIf
+				F.ODBC.conx!rst.Close
+			'TDjohan - END - 11/27/2023
+			F.Intrinsic.Control.Else	'IssueQty is ZERO
+				F.Intrinsic.String.Build("Issue skipped because Issue Qty is ZERO; OnHand Qty = {0}, Issue Qty = {1}",V.DataTable.dtIssueSelected(V.Local.iCnt).OnHand!FieldValFloat,V.DataTable.dtIssueSelected(V.Local.iCnt).IssueQty!FieldValFloat,V.Local.sErrorMessage)
+				F.Intrinsic.Control.CallSub("WriteErrorLog","sErrorMessage",V.Local.sErrorMessage)
+			F.Intrinsic.Control.EndIf
+		F.Intrinsic.Control.Next(V.Local.iCnt)
+		
+		F.Intrinsic.Control.If(V.DataTable.dtIssueSelected.RowCount,>,0)
+			F.Intrinsic.Math.Sub(V.DataTable.dtIssueSelected.RowCount,V.Global.iErrorCnt,V.Local.iSuccessCnt)
+			F.Intrinsic.String.Build("Total record processed: {1}{0}Total record issued: {2}{0}Total record rejected: {3}",V.Ambient.NewLine,V.DataTable.dtIssueSelected.RowCount,V.Local.iSuccessCnt,V.Global.iErrorCnt,V.Local.sErrorMessage)
+			F.Intrinsic.Control.CallSub("WriteErrorCntLog","sErrorMessage",V.Local.sErrorMessage)
+		F.Intrinsic.Control.EndIf
+		
+		F.Intrinsic.Control.If(V.DataTable.dtLot.Exists,=,True)
+			F.Data.DataTable.Close("dtLot")
+		F.Intrinsic.Control.EndIf
+		
+		F.Intrinsic.Control.If(V.DataTable.dtIssueSelected.Exists,=,True)
+			F.Data.DataTable.Close("dtIssueSelected")
+		F.Intrinsic.Control.EndIf
+			
+		F.Intrinsic.Control.If(V.Screen.Form!frmByCustomerPO.Visible,=,True)
+			F.Intrinsic.Control.CallSub("cmdRefreshCustomerPO_Click")
+		F.Intrinsic.Control.ElseIf(V.Screen.Form!frmBySalesOrder.Visible,=,True)
+			F.Intrinsic.Control.CallSub("cmdRefreshSalesOrder_Click")
+		F.Intrinsic.Control.EndIf
+			
+		F.Intrinsic.File.Exists(V.Global.sFileName,V.Local.bErrorLogFileExists)
+		F.Intrinsic.Control.If(V.Local.bErrorLogFileExists)
+			'Display the error log file in Notepad
+			F.Intrinsic.File.GetHandle(V.Local.iHandle)
+			F.Intrinsic.Task.ShellExec(V.Local.iHandle,"open",V.Global.sFileName,"","",1)
+		F.Intrinsic.Control.EndIf
+	
+		F.Intrinsic.UI.CloseWaitDialog
+		
+	F.Intrinsic.Control.EndIf
+	
+	Gui.Form.cmdIssueSelected.Enabled(True)
+	
+F.Intrinsic.Control.Catch
+	F.Intrinsic.String.Build("Project: {0}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}GAB Version: {5}}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	f.Intrinsic.Control.CallSub("Unload")
+F.Intrinsic.Control.EndTry	
+Program.Sub.cmdIssueSelected_Click.End
+
+Program.Sub.IssueMaterialAllSelected.Start
+F.Intrinsic.Control.Try
+	V.Local.sError.Declare
+	V.Local.dIssued.Declare(Date)
+	V.Local.fQtyIssued.Declare
+	V.Local.iLen.Declare
+	V.Local.sBin.Declare
+	V.Local.sFile.Declare
+	V.Local.sFileName.Declare
+	V.Local.sHeat.Declare
+	V.Local.sIssueDate.Declare
+	V.Local.sLot.Declare
+	V.Local.sParam.Declare
+	V.Local.sPart.Declare
+	V.Local.sQtyIssue.Declare
+	V.Local.sQuery.Declare
+	V.Local.sRev.Declare
+	V.Local.sSerial.Declare
+	V.Local.sUser.Declare
+	V.Local.sErrorLog.Declare
+	V.Local.sErrorMessage.Declare
+	V.Local.sTranTimeBegin.Declare
+	V.Local.sTranTimeEnd.Declare
+	V.Local.sPartTemp.Declare
+	V.Local.sGssPartNo.Declare
+	
+	'Check if WO is currently opened by a user at x_lock_file table
+	F.Intrinsic.Control.CallSub(checklockfile)
+	
+	F.Intrinsic.Control.If(V.Global.bLock,=,False)
+		'Preparing file name to be called by callwrapper
+		F.Intrinsic.String.Concat("I",V.Caller.CompanyCode,"IF",V.Caller.Terminal,V.Local.sParam)
+		F.Intrinsic.String.Concat(V.Caller.FilesDir,"\",V.Local.sParam,V.Local.sFileName)
+		
+		'TDjohan - BEGIN - 11/27/2023
+		'Added support for Revision
+'		V.Local.sPart.Set(V.DataTable.dtIssueSelected(V.Global.iReq).PartToIssue!FieldValTrim)
+'		F.Intrinsic.String.Len(V.Local.sPart,V.Local.iLen)
+'		
+'		
+'		F.Intrinsic.Control.If(V.Local.iLen,>,17)
+'			F.Intrinsic.String.Mid(V.Local.sPart,17,V.Local.sRev)
+'			F.Intrinsic.String.Left(V.Local.sPart,17,V.Local.sPart)
+'		F.Intrinsic.Control.Else
+'			V.Local.sRev.Set("")
+'		F.Intrinsic.Control.EndIf
+		F.Intrinsic.Control.If(v.Global.bUseRevision)
+			F.Intrinsic.String.RPad(V.DataTable.dtIssueSelected(V.Global.iReq).PartToIssue!FieldValTrim," ",20,v.Local.sPartTemp)
+			F.Intrinsic.String.Left(v.Local.sPartTemp,17,v.Local.sPart)
+			F.Intrinsic.String.Right(v.Local.sPartTemp,3,v.Local.sRev)
+		F.Intrinsic.Control.Else
+			v.Local.sPart.Set(V.DataTable.dtIssueSelected(V.Global.iReq).PartToIssue!FieldValTrim)
+			V.Local.sRev.Set("")
+		F.Intrinsic.Control.EndIf
+		F.Intrinsic.String.GSSPartString(v.Local.sPart,v.Local.sRev,v.Local.sGssPartNo)
+		'TDjohan - END - 11/27/2023
+		
+		F.Intrinsic.String.Format(V.Args.fIssue,"0.0000",V.Local.sQtyIssue)
+		
+		'Lot/bin information if the part is flagged as lot/bin
+		V.Local.sBin.Set(V.Args.sBin)
+		V.Local.sHeat.Set(V.Args.sHeat)
+		V.Local.sLot.Set(V.Args.sLot)
+		V.Local.sSerial.Set(V.Args.sSerial)
+		
+		
+		F.Intrinsic.String.Format(V.Ambient.Now,"HhNnSs",V.Local.sTranTimeBegin)
+		F.Intrinsic.String.Concat(V.Local.sTranTimeBegin,"00",V.Local.sTranTimeBegin)
+		
+		'Preparing the file format
+'		F.Data.DataTable.AddRow("450100","Part",V.DataTable.dtIssueSelected(V.Global.iReq).PartToIssue!FieldValTrim,"Location",V.DataTable.dtIssueSelected(V.Global.iReq).PartToIssueLoc!FieldValTrim,"Quantity",V.Local.sQtyIssue,"Lot",V.Local.sLot.Trim,"Bin",V.Local.sBin.Trim,"Heat",V.Local.sHeat.Trim,"Serial",V.Local.sSerial.Trim,"WONumber",V.DataTable.dtIssueSelected(V.Global.iReq).Job!FieldValTrim,"WOSuffix",V.DataTable.dtIssueSelected(V.Global.iReq).Suffix!FieldValTrim,"WOSeq",V.DataTable.dtIssueSelected(V.Global.iReq).Seq!FieldValTrim)
+		F.Data.DataTable.AddRow("450100","Part",v.Local.sPart,"Rev",v.Local.sRev,"Location",V.DataTable.dtIssueSelected(V.Global.iReq).PartToIssueLoc!FieldValTrim,"Quantity",V.Local.sQtyIssue,"Lot",V.Local.sLot.Trim,"Bin",V.Local.sBin.Trim,"Heat",V.Local.sHeat.Trim,"Serial",V.Local.sSerial.Trim,"WONumber",V.DataTable.dtIssueSelected(V.Global.iReq).Job!FieldValTrim,"WOSuffix",V.DataTable.dtIssueSelected(V.Global.iReq).Suffix!FieldValTrim,"WOSeq",V.DataTable.dtIssueSelected(V.Global.iReq).Seq!FieldValTrim)
+		
+		F.Intrinsic.Control.CallSub(450100Sync)
+		
+		F.Intrinsic.String.Format(V.Ambient.Now,"HhNnSs",V.Local.sTranTimeEnd)
+		F.Intrinsic.String.Concat(V.Local.sTranTimeEnd,"99",V.Local.sTranTimeEnd)
+		
+		'Check for successful processing of transactions
+		F.Intrinsic.String.Format(V.Ambient.Date,"YYMMDD",V.Local.sIssueDate)
+		V.Local.dIssued.Set(V.Ambient.Date)
+		F.Intrinsic.Math.Mult(-1,V.Args.fIssue,V.Local.fQtyIssued)
+		V.Local.sUser.Set(V.Caller.User)
+		F.Intrinsic.String.Build("select part from inventory_hist where date_history = '{0}' and part = '{1}' and location = '{2}' and job = '{3}' and suffix = '{4}' and seq = '{5}' and quantity = {6} and userid = '{7}' and inv_hist_time >= '{8}' and inv_hist_time <= '{9}' and code_transaction = 'J55'",V.Local.sIssueDate.Trim,v.Local.sGssPartNo.PSQLFriendly,V.DataTable.dtIssueSelected(V.Global.iReq).PartToIssueLoc!FieldValTrim,V.DataTable.dtIssueSelected(V.Global.iReq).Job!FieldValTrim,V.DataTable.dtIssueSelected(V.Global.iReq).Suffix!FieldValTrim,V.DataTable.dtIssueSelected(V.Global.iReq).Seq!FieldValTrim,V.Local.fQtyIssued,V.Local.sUser.Trim,V.Local.sTranTimeBegin,V.Local.sTranTimeEnd,V.Local.sQuery)
+		F.ODBC.Connection!conx.OpenLocalRecordsetRO("rstHist",V.Local.sQuery)
+		F.Intrinsic.Control.If(V.ODBC.conx!rstHist.EOF,=,False)
+			'Check JOB_TRANS_ERR if issue is failed
+			F.Intrinsic.String.Build("select description, msg_id, filename from v_job_trans_err where job = '{0}' and suffix = '{1}' and seq = '{2}' and part = '{3}' and loc = '{4}' and tran_date = '{5}' and err_time >= '{6}' and err_time <= '{7}' and program = 'JB0320'",V.DataTable.dtIssueSelected(V.Global.iReq).Job!FieldValTrim,V.DataTable.dtIssueSelected(V.Global.iReq).Suffix!FieldValTrim,V.DataTable.dtIssueSelected(V.Global.iReq).Seq!FieldValTrim,v.Local.sGssPartNo.PSQLFriendly,V.DataTable.dtIssueSelected(V.Global.iReq).PartToIssueLoc!FieldValTrim,V.Local.dIssued.PervasiveDate,V.Local.sTranTimeBegin,V.Local.sTranTimeEnd,V.Local.sQuery)
+			F.ODBC.Connection!conx.OpenLocalRecordsetRO("rst",V.Local.sQuery)
+			F.Intrinsic.Control.If(V.ODBC.conx!rst.EOF,=,False)		
+				F.Intrinsic.String.Build("Issue failed because of MSG_ID = {0}; FILENAME = {1};",V.ODBC.conx!rst.FieldVal!msg_id,V.ODBC.conx!rst.FieldVal!filename,V.Local.sErrorMessage)					
+				F.Intrinsic.Control.CallSub("WriteErrorLog","sErrorMessage",V.Local.sErrorMessage)
+			F.Intrinsic.Control.EndIf
+			F.ODBC.conx!rst.Close
+		F.Intrinsic.Control.Else
+			'Transaction is not successful
+			V.Local.sErrorMessage.Set("Issue failed because of unknown reason; NOT RECORDED in INVENTORY HISTORY")	
+			F.Intrinsic.Control.CallSub("WriteErrorLog","sErrorMessage",V.Local.sErrorMessage)
+		F.Intrinsic.Control.EndIf
+		F.ODBC.conx!rstHist.Close
+	F.Intrinsic.Control.Else
+		V.Local.sErrorMessage.Set("Issue skipped because the Job is locked for editing by another user")
+		F.Intrinsic.Control.CallSub("WriteErrorLog","sErrorMessage",V.Local.sErrorMessage)
+	F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.String.Build("Project: {0}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}GAB Version: {5}}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	f.Intrinsic.Control.CallSub("Unload")
+F.Intrinsic.Control.EndTry	
+Program.Sub.IssueMaterialAllSelected.End
+
+Program.Sub.IssueMaterialAllSelectedLotBin.Start
+F.Intrinsic.Control.Try
+	V.Local.sError.Declare
+	V.Local.dIssued.Declare(Date)
+	V.Local.fQtyIssued.Declare
+	V.Local.iLen.Declare
+	V.Local.sBin.Declare
+	V.Local.sFile.Declare
+	V.Local.sFileName.Declare
+	V.Local.sHeat.Declare
+	V.Local.sIssueDate.Declare
+	V.Local.sLot.Declare
+	V.Local.sParam.Declare
+	V.Local.sPart.Declare
+	V.Local.sQtyIssue.Declare
+	V.Local.sQuery.Declare
+	V.Local.sRev.Declare
+	V.Local.sSerial.Declare
+	V.Local.sUser.Declare
+	V.Local.sErrorMessage.Declare
+	V.Local.sTranTimeBegin.Declare
+	V.Local.sTranTimeEnd.Declare
+	v.Local.sPartTemp.Declare
+	v.Local.sGssPartNo.Declare
+	
+	'Check if WO is currently opened by a user at x_lock_file table
+	F.Intrinsic.Control.CallSub(checklockfile)
+	
+	F.Intrinsic.Control.If(V.Global.bLock,=,False)
+		'Preparing file name to be called by callwrapper
+		F.Intrinsic.String.Concat("I",V.Caller.CompanyCode,"IF",V.Caller.Terminal,V.Local.sParam)
+		F.Intrinsic.String.Concat(V.Caller.FilesDir,"\",V.Local.sParam,V.Local.sFileName)
+		
+		'TDjohan - BEGIN - 11/27/2023
+		'Added support for Revision
+'		V.Local.sPart.Set(V.DataTable.dtIssueSelected(V.Global.iReq).PartToIssue!FieldValTrim)
+'		F.Intrinsic.String.Len(V.Local.sPart,V.Local.iLen)
+'		
+'		F.Intrinsic.Control.If(V.Local.iLen,>,17)
+'			F.Intrinsic.String.Mid(V.Local.sPart,17,V.Local.sRev)
+'			F.Intrinsic.String.Left(V.Local.sPart,17,V.Local.sPart)
+'		F.Intrinsic.Control.Else
+'			V.Local.sRev.Set("")
+'		F.Intrinsic.Control.EndIf
+		F.Intrinsic.Control.If(v.Global.bUseRevision)
+			F.Intrinsic.String.RPad(V.DataTable.dtIssueSelected(V.Global.iReq).PartToIssue!FieldValTrim," ",20,v.Local.sPartTemp)
+			F.Intrinsic.String.Left(v.Local.sPartTemp,17,v.Local.sPart)
+			F.Intrinsic.String.Right(v.Local.sPartTemp,3,v.Local.sRev)
+		F.Intrinsic.Control.Else
+			v.Local.sPart.Set(V.DataTable.dtIssueSelected(V.Global.iReq).PartToIssue!FieldValTrim)
+			V.Local.sRev.Set("")
+		F.Intrinsic.Control.EndIf
+		F.Intrinsic.String.GSSPartString(v.Local.sPart,v.Local.sRev,v.Local.sGssPartNo)
+		'TDjohan - END - 11/27/2023
+		
+		F.Intrinsic.String.Format(V.Args.fIssue,"0.0000",V.Local.sQtyIssue)
+		
+		'Lot/bin information if the part is flagged as lot/bin
+		V.Local.sBin.Set(V.Args.sBin)
+		V.Local.sHeat.Set(V.Args.sHeat)
+		V.Local.sLot.Set(V.Args.sLot)
+		V.Local.sSerial.Set(V.Args.sSerial)
+		
+		
+		F.Intrinsic.String.Format(V.Ambient.Now,"HhNnSs",V.Local.sTranTimeBegin)
+		F.Intrinsic.String.Concat(V.Local.sTranTimeBegin,"00",V.Local.sTranTimeBegin)
+		
+		'Preparing the file format
+'		F.Data.DataTable.AddRow("450100","Part",V.DataTable.dtIssueSelected(V.Global.iReq).PartToIssue!FieldValTrim,"Location",V.DataTable.dtIssueSelected(V.Global.iReq).PartToIssueLoc!FieldValTrim,"Quantity",V.Local.sQtyIssue,"Lot",V.Local.sLot.Trim,"Bin",V.Local.sBin.Trim,"Heat",V.Local.sHeat.Trim,"Serial",V.Local.sSerial.Trim,"WONumber",V.DataTable.dtIssueSelected(V.Global.iReq).Job!FieldValTrim,"WOSuffix",V.DataTable.dtIssueSelected(V.Global.iReq).Suffix!FieldValTrim,"WOSeq",V.DataTable.dtIssueSelected(V.Global.iReq).Seq!FieldValTrim)
+		F.Data.DataTable.AddRow("450100","Part",v.Local.sPart,"Rev",v.Local.sRev,"Location",V.DataTable.dtIssueSelected(V.Global.iReq).PartToIssueLoc!FieldValTrim,"Quantity",V.Local.sQtyIssue,"Lot",V.Local.sLot.Trim,"Bin",V.Local.sBin.Trim,"Heat",V.Local.sHeat.Trim,"Serial",V.Local.sSerial.Trim,"WONumber",V.DataTable.dtIssueSelected(V.Global.iReq).Job!FieldValTrim,"WOSuffix",V.DataTable.dtIssueSelected(V.Global.iReq).Suffix!FieldValTrim,"WOSeq",V.DataTable.dtIssueSelected(V.Global.iReq).Seq!FieldValTrim)
+		F.Intrinsic.Control.CallSub(450100Sync)
+		
+		F.Intrinsic.String.Format(V.Ambient.Now,"HhNnSs",V.Local.sTranTimeEnd)
+		F.Intrinsic.String.Concat(V.Local.sTranTimeEnd,"99",V.Local.sTranTimeEnd)
+		
+		'Check for successful processing of transactions
+		F.Intrinsic.String.Format(V.Ambient.Date,"YYMMDD",V.Local.sIssueDate)
+		V.Local.dIssued.Set(V.Ambient.Date)
+		F.Intrinsic.Math.Mult(-1,V.Args.fIssue,V.Local.fQtyIssued)
+		V.Local.sUser.Set(V.Caller.User)
+		F.Intrinsic.String.Build("select part from inventory_hist where date_history = '{0}' and part = '{1}' and location = '{2}' and job = '{3}' and suffix = '{4}' and seq = '{5}' and quantity = {6} and userid = '{7}' and inv_hist_time >= '{8}' and inv_hist_time <= '{9}' and code_transaction = 'J55'",V.Local.sIssueDate.Trim,v.Local.sGssPartNo.PSQLFriendly,V.DataTable.dtIssueSelected(V.Global.iReq).PartToIssueLoc!FieldValTrim,V.DataTable.dtIssueSelected(V.Global.iReq).Job!FieldValTrim,V.DataTable.dtIssueSelected(V.Global.iReq).Suffix!FieldValTrim,V.DataTable.dtIssueSelected(V.Global.iReq).Seq!FieldValTrim,V.Local.fQtyIssued,V.Local.sUser.Trim,V.Local.sTranTimeBegin,V.Local.sTranTimeEnd,V.Local.sQuery)
+		F.ODBC.Connection!conx.OpenLocalRecordsetRO("rstHist",V.Local.sQuery)
+		F.Intrinsic.Control.If(V.ODBC.conx!rstHist.EOF,=,False)
+			'Check JOB_TRANS_ERR if issue is failed
+			F.Intrinsic.String.Build("select description, msg_id, filename from v_job_trans_err where job = '{0}' and suffix = '{1}' and seq = '{2}' and part = '{3}' and loc = '{4}' and tran_date = '{5}' and err_time >= '{6}' and err_time <= '{7}' and program = 'JB0320'",V.DataTable.dtIssueSelected(V.Global.iReq).Job!FieldValTrim,V.DataTable.dtIssueSelected(V.Global.iReq).Suffix!FieldValTrim,V.DataTable.dtIssueSelected(V.Global.iReq).Seq!FieldValTrim,v.Local.sGssPartNo.PSQLFriendly,V.DataTable.dtIssueSelected(V.Global.iReq).PartToIssueLoc!FieldValTrim,V.Local.dIssued.PervasiveDate,V.Local.sTranTimeBegin,V.Local.sTranTimeEnd,V.Local.sQuery)
+			F.ODBC.Connection!conx.OpenLocalRecordsetRO("rst",V.Local.sQuery)
+			F.Intrinsic.Control.If(V.ODBC.conx!rst.EOF,=,False)		
+				F.Intrinsic.String.Build("Issue failed because of MSG_ID = {0}; FILENAME = {1};",V.ODBC.conx!rst.FieldVal!msg_id,V.ODBC.conx!rst.FieldVal!filename,V.Local.sErrorMessage)					
+				F.Intrinsic.Control.CallSub("WriteErrorLog","sErrorMessage",V.Local.sErrorMessage)
+			F.Intrinsic.Control.EndIf
+			F.ODBC.conx!rst.Close
+		F.Intrinsic.Control.Else
+			'Transaction is not successful
+			V.Local.sErrorMessage.Set("Issue failed because of unknown reason; NOT RECORDED in INVENTORY HISTORY")	
+			F.Intrinsic.Control.CallSub("WriteErrorLog","sErrorMessage",V.Local.sErrorMessage)
+		F.Intrinsic.Control.EndIf
+		F.ODBC.conx!rstHist.Close
+	F.Intrinsic.Control.Else
+		V.Local.sErrorMessage.Set("Issue skipped because the Job is locked for editing by another user")
+		F.Intrinsic.Control.CallSub("WriteErrorLog","sErrorMessage",V.Local.sErrorMessage)
+	F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.String.Build("Project: {0}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}GAB Version: {5}}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	f.Intrinsic.Control.CallSub("Unload")
+F.Intrinsic.Control.EndTry	
+Program.Sub.IssueMaterialAllSelectedLotBin.End
+
+Program.Sub.WriteErrorLog.Start
+F.Intrinsic.Control.Try
+	V.Local.sError.Declare
+	V.Local.sErrorLog.Declare
+	V.Local.bErrorLogFileExists.Declare
+	
+	'Increment the error count
+	F.Intrinsic.Math.Add(V.Global.iErrorCnt,1,V.Global.iErrorCnt)
+	
+	V.Local.sErrorLog.Set("")
+	F.Intrinsic.String.Build("{0}Job: {3} {2}Suffix: {4} {2}Seq: {5}",V.Local.sErrorLog,V.Ambient.NewLine,V.Ambient.Tab,V.DataTable.dtIssueSelected(V.Global.iReq).Job!FieldValTrim,V.DataTable.dtIssueSelected(V.Global.iReq).Suffix!FieldValTrim,V.DataTable.dtIssueSelected(V.Global.iReq).Seq!FieldValTrim,V.Local.sErrorLog)
+	F.Intrinsic.String.Build("{0}{1}Part: {3} {2}Loc: {4}",V.Local.sErrorLog,V.Ambient.NewLine,V.Ambient.Tab,V.DataTable.dtIssueSelected(V.Global.iReq).PartToIssue!FieldValTrim,V.DataTable.dtIssueSelected(V.Global.iReq).PartToIssueLoc!FieldValTrim,V.Local.sErrorLog)
+	F.Intrinsic.String.Build("{0}{1}{2}",V.Local.sErrorLog,V.Ambient.NewLine,V.Args.sErrorMessage,V.Local.sErrorLog)	
+	F.Intrinsic.String.Build("{0}{1}{2}{1}",V.Local.sErrorLog,V.Ambient.NewLine,"==================================================",V.Local.sErrorLog)
+	
+	Function.Intrinsic.File.Exists(V.Global.sFileName,V.Local.bErrorLogFileExists)
+	F.Intrinsic.Control.If(V.Local.bErrorLogFileExists)
+		Function.Intrinsic.File.AppendToFile(V.Global.sFileName,V.Local.sErrorLog)
+	F.Intrinsic.Control.Else
+		F.Intrinsic.File.String2File(V.Global.sFileName,V.Local.sErrorLog)
+	F.Intrinsic.Control.EndIf
+	
+F.Intrinsic.Control.Catch
+	F.Intrinsic.String.Build("Project: {0}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}GAB Version: {5}}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	f.Intrinsic.Control.CallSub("Unload")
+F.Intrinsic.Control.EndTry	
+Program.Sub.WriteErrorLog.End
+
+Program.Sub.WriteErrorCntLog.Start
+F.Intrinsic.Control.Try
+	V.Local.sError.Declare
+	V.Local.bErrorLogFileExists.Declare
+	
+	Function.Intrinsic.File.Exists(V.Global.sFileName,V.Local.bErrorLogFileExists)
+	F.Intrinsic.Control.If(V.Local.bErrorLogFileExists)
+		Function.Intrinsic.File.AppendToFile(V.Global.sFileName,V.Args.sErrorMessage)
+	F.Intrinsic.Control.Else
+		F.Intrinsic.File.String2File(V.Global.sFileName,V.Args.sErrorMessage)
+	F.Intrinsic.Control.EndIf
+	
+F.Intrinsic.Control.Catch
+	F.Intrinsic.String.Build("Project: {0}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}GAB Version: {5}}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	f.Intrinsic.Control.CallSub("Unload")
+F.Intrinsic.Control.EndTry	
+Program.Sub.WriteErrorCntLog.End
+
+Program.Sub.gsWO_MouseDown.Start
+f.Intrinsic.Control.Try
+	v.Local.sError.Declare
+	V.Local.sColumnName.Declare
+
+	F.Intrinsic.Control.If(V.Args.MouseCol,>=,0)
+		'IssueQty
+		Gui.Form.gsWO.GetColumnNameByIndex("GVMain",V.Args.MouseCol,V.Local.sColumnName)
+		F.Intrinsic.Control.If(V.Local.sColumnName,=,"IssueQty")
+			'TDjohan - BEGIN - 11/27/2023
+			'Allow to issue NEGATIVE Quantity
+'			F.Intrinsic.Control.BlockEvents
+'			F.Intrinsic.Control.If(V.DataTable.MainTB(V.Args.MouseRow).IssueQty!FieldValFloat,=,0)
+'				F.Intrinsic.Control.If(V.DataTable.MainTB(v.Args.MouseRow).ToBeIssued!FieldValFloat,>,0)
+'					F.Data.DataTable.SetValue("MainTB",V.Args.MouseRow,"IssueQty",V.DataTable.MainTB(v.Args.MouseRow).ToBeIssued!FieldValFloat)
+'				F.Intrinsic.Control.EndIf
+'				F.Intrinsic.Control.If(V.DataTable.MainTB(V.Args.MouseRow).IssueQty!FieldValFloat,>,0)
+'					F.Data.DataTable.SetValue("MainTB",V.Args.MouseRow,"FlagIssue",True)
+'				F.Intrinsic.Control.Else
+'					F.Data.DataTable.SetValue("MainTB",V.Args.MouseRow,"FlagIssue",False)
+'				F.Intrinsic.Control.EndIf
+'			F.Intrinsic.Control.Else
+'				F.Data.DataTable.SetValue("MainTB",V.Args.MouseRow,"FlagIssue",True)
+'			F.Intrinsic.Control.EndIf
+'			F.Intrinsic.Control.UnBlockEvents
+			
+			F.Intrinsic.Control.BlockEvents
+			F.Intrinsic.Control.If(V.DataTable.MainTB(V.Args.MouseRow).IssueQty!FieldValFloat,=,0)
+				F.Intrinsic.Control.If(V.DataTable.MainTB(v.Args.MouseRow).ToBeIssued!FieldValFloat,<>,0)
+					F.Data.DataTable.SetValue("MainTB",V.Args.MouseRow,"IssueQty",V.DataTable.MainTB(v.Args.MouseRow).ToBeIssued!FieldValFloat,"FlagIssue",True)
+				F.Intrinsic.Control.EndIf
+			F.Intrinsic.Control.Else
+				F.Data.DataTable.SetValue("MainTB",V.Args.MouseRow,"FlagIssue",True)
+			F.Intrinsic.Control.EndIf
+			F.Intrinsic.Control.UnBlockEvents
+			'TDjohan - END - 11/27/2023
+		F.Intrinsic.Control.EndIf
+	F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.String.Build("Project: {0}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}GAB Version: {5}}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	f.Intrinsic.Control.CallSub("Unload")
+F.Intrinsic.Control.EndTry
+Program.Sub.gsWO_MouseDown.End
+
+Program.Sub.Comments.Start
+${$5$}$2.0.0.0$}$2
+${$6$}$tdjohan$}$20231219111508779$}$8rAQhOSvlohpQhMDm1j544LwmwXnRbkhoPlIdAtHF/f/B48G7m2XZOyMwiZg4iXfab/fdH/Fevw=
+Program.Sub.Comments.End
